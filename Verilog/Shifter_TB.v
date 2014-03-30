@@ -21,13 +21,15 @@
 
 
 module Shifter_TB();
-reg [15:0] base, power;
+reg [31:0] base, power;
 reg start, clk;
-wire [15:0] result;
+wire [31:0] result;
 wire done;
 
-UUT Shifter(base,power,start,clk,result, done);
+UUT Shifter(base,power,clk,result);
 
-
+initial begin
+	clk = 0; base = 0; power = 0; #5;
+	base = 31'd2; power = 31'd2; #10;
 
 endmodule
