@@ -22,14 +22,20 @@
 
 module Shifter_TB();
 reg [31:0] base, power;
-reg start, clk;
+reg clk;
 wire [31:0] result;
-wire done;
 
-UUT Shifter(base,power,clk,result);
+Shifter UUT (base,power,clk,result);
 
 initial begin
 	clk = 0; base = 0; power = 0; #5;
 	base = 31'd2; power = 31'd2; #10;
+	base = 31'd10; power = 31'd1; #10;
+	$stop;
+end
+
+always #1 begin
+    clk = ~clk;
+    end
 
 endmodule

@@ -19,7 +19,7 @@
 module Shifter(base,power,clk,result);
 input [31:0] base, power;
 input clk;
-output [31:0] result;
+output reg [31:0] result;
     
     always @ (posedge clk) begin
         result <= base << power;
