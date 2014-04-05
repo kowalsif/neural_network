@@ -24,8 +24,9 @@ output reg [31:0] result;
 
     always @ (posedge clk) begin
 		if(power[7] == 1) begin
-			$display("%d", (~power+ 1'b1));
-			result <= base >> ~power + 1'b1;
+			$display("%d", -power);
+			//result <= base >> ~power + 1'b1;
+			result <= base >> -power;
 		end else begin
 			result <= base << power;
 		end
