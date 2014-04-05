@@ -17,12 +17,18 @@
 
 
 module Shifter(base,power,clk,result);
-input [31:0] base, power;
+input [31:0] base;
+input [7:0] power;
 input clk;
 output reg [31:0] result;
-    
+
     always @ (posedge clk) begin
-        result <= base << power;
+		if(power[7] == 1) begin
+			$display("%d", (~power+ 1'b1));
+			result <= base >> ~power + 1'b1;
+		end else begin
+			result <= base << power;
+		end
     end
 
 endmodule
