@@ -1,2 +1,4 @@
 http://hackbbs.org/article/reds/form_de_base/SBI/doc_introANN.pdf
 http://delivery.acm.org/10.1145/510000/501837/p225-gadea.pdf?ip=137.112.230.33&id=501837&acc=ACTIVE%20SERVICE&key=EA62C54EFA59E1BA%2EE04E3F38F51542D4%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35&CFID=307634229&CFTOKEN=95774825&__acm__=1395687068_34eb2510886ce0b42de906ef78a2bf56
+http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4182384&tag=1
+http://lab.fs.uni-lj.si/lasin/wp/IMIT_files/neural/doc/Omondi2006.pdf
