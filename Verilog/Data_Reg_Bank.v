@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 // 
-// Module Name: WeightRegBank
-// Project Name: Brain Network
+// Module Name: DataRegBank
+// Project Name: Distributed Brain
 // Description:  
 // 
 //////////////////////////////////////////////////////////////////////////////////
@@ -148,7 +148,7 @@ always @ (posedge clk) begin
 				out9 <= out9;
 				end
 		endcase
-	end else if(writeAll == 1) begin
+	end else if (writeAll == 1) begin
 		out0 <= in0;
 		out1 <= in1;
 		out2 <= in2;

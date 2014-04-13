@@ -5,6 +5,7 @@ import sys
 import random
 import math
 import Weight_Reg_Bank
+import Data_Reg_Bank
 
 def header(module, description):
 	names = ['Neural Network', 'FPGA Brain', 'Brain Network', 'Distributed Brain']
@@ -23,8 +24,9 @@ def header(module, description):
 def main():
 	numUnits = int(sys.argv[1])
 	random.seed()
-	Weight_Reg_Bank.WeightRegBank(numUnits)
-	Weight_Reg_Bank.WeightRegBankTB(numUnits)
+	#Weight_Reg_Bank.WeightRegBank(numUnits)
+	#Weight_Reg_Bank.WeightRegBankTB(numUnits)
+	Data_Reg_Bank.DataRegBank(numUnits)
 	
 
 	
