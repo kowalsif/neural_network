@@ -6,14 +6,14 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module WeightRegBank(dataIn, address, write, clk, out0, out1, out2, out3, out4, out5, out6, out7, out8, out9);
-input [7:0] dataIn;
+module DataRegBank(in0, in1, in2, in3, in4, in5, in6, in7, in8, in9, dataIn, address, writeAddress, writeAll, clk, out0, out1, out2, out3, out4, out5, out6, out7, out8, out9);
+input [31:0] in0, in1, in2, in3, in4, in5, in6, in7, in8, in9, dataIn;
 input [3:0] address;
-input write, clk;
-output reg [7:0] out0, out1, out2, out3, out4, out5, out6, out7, out8, out9;
+input writeAddress, writeAll, clk;
+output reg [31:0] out0, out1, out2, out3, out4, out5, out6, out7, out8, out9;
 
 always @ (posedge clk) begin
-	if(write == 1) begin
+	if(writeAddress == 1) begin
 		case(address)
 			0: begin
 				out0 <= dataIn;
@@ -148,6 +148,17 @@ always @ (posedge clk) begin
 				out9 <= out9;
 				end
 		endcase
+	end else if(writeAll == 1) begin
+		out0 <= in0;
+		out1 <= in1;
+		out2 <= in2;
+		out3 <= in3;
+		out4 <= in4;
+		out5 <= in5;
+		out6 <= in6;
+		out7 <= in7;
+		out8 <= in8;
+		out9 <= in9;
 	end
 end
 endmodule
