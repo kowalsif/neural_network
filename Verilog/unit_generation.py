@@ -27,6 +27,7 @@ def main():
 	#Weight_Reg_Bank.WeightRegBank(numUnits)
 	#Weight_Reg_Bank.WeightRegBankTB(numUnits)
 	Data_Reg_Bank.DataRegBank(numUnits)
+	Data_Reg_Bank.DataRegBankTB(numUnits)
 	
 
 	
