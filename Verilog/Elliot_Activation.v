@@ -22,18 +22,21 @@
 
 module Elliot_Activation(
     input [31:0] x,
-    input [7:0] s,
     input start,
     input clk,
     output [31:0] y,
     output end_signal
     );
     
-    wire [31:0] shifted_x;
+    reg [31:0] shifted_x;
     wire den_start;
     wire [31:0] den_out;
     
-    Shifter shifter(x, s, clk, shifted_x);
+	parameter s = 8'b00000001;
+    
+	always @ (x) begin
+		shifted_x <= x << s ;
+	end
     Denominator denominator(x, clk, start, den_start, den_out);
     Divisor_non_restoring divisor(shifted_x, den_out, clk, den_start, y, end_signal);
     

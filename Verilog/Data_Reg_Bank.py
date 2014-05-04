@@ -3,7 +3,7 @@ import math
 
 def DataRegBank(numUnits):
 	f = open('Data_Reg_Bank.v', 'w')
-	f.write(unit_generation.header('DataRegBank', ' '))
+	f.write(unit_generation.header('DataRegBank', 'For '+str(numUnits)+' units'))
 	
 	#module declaration
 	f.write('module DataRegBank(')
