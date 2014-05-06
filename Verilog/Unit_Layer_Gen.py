@@ -84,21 +84,44 @@ def UnitLayer_tb(numUnits):
 		f.write('input{}, '.format(i))
 	f.write('weight, address, write, sumTrigger, layer_Sel, clk, layerOut, layerDone);\n\n')
 	
-	f.write('initial begin\n')
+	for i in range(numUnits):
+		f.write('\twire [7:0] internalWeight{0} = UUT.weightWire{0};\n'.format(i))
+		f.write('\twire [31:0] shifter{0} = UUT.shiftwire{0};\n'.format(i))
+		
+	
+	f.write("""
+	wire [31:0] sum = UUT.sumWire;
+	wire sumEnd = UUT.sum_end_signal;
+	wire [31:0] elliot = UUT.elliotWire;
+	wire elliotEnd = UUT.elliot_end_signal;
+	reg [4:0] count=0;""")
+	
+	f.write('\ninitial begin\n')
 	f.write('\tclk=0;\n\t')
 	
 	for i in range(numUnits):
 		f.write('input{0}={0}; '.format(i))
-	f.write('weight=8\'b00000001; address=0; write=0; sumTrigger=0; layer_Sel=0; #25;\n')
+	f.write('\n')
 	
-	f.write('\tweight=8\'b00000001; address=0; write=1; sumTrigger=0; layer_Sel=0; #25;\n')
-	f.write('\tweight=8\'b00000001; address=0; write=0; sumTrigger=0; layer_Sel=0; #25;\n')
-	f.write('\tweight=8\'b00000001; address=0; write=0; sumTrigger=1; layer_Sel=0; #25;\n')
-	f.write('\tweight=8\'b00000111; address=2; write=1; sumTrigger=0; layer_Sel=1; #25;\n')
-	f.write('\tweight=8\'b00000001; address=0; write=0; sumTrigger=1; layer_Sel=1; #25;\n')
-	f.write('\tweight=8\'b00000001; address=0; write=0; sumTrigger=0; layer_Sel=1; #25;\n')
-	
-	f.write('$stop;\n')
+	for i in range(numUnits):
+		f.write('\tweight={0}; address={0}; write=1; sumTrigger=0; layer_Sel=0; #5;\n'.format(i))
+		f.write('\twrite=0; #5;\n')
 	f.write('end\n\n')
+	
+	f.write('always @ (posedge layerDone) begin\n')
+	f.write('\tcount = count+1;\n')
+	f.write('\tif(count == 3) begin #5; $finish; end\n')
+	f.write('\tif(count == 2) layer_sel=0;\n\t')
+	for i in range(numUnits):
+		f.write('input{0} = count+{0}; '.format(i))
+	f.write('\n')
+	
+	for i in range(numUnits):
+		f.write('\tweight= count*{0}+1; address={1}; write=1; #5;\n'.format(i+1, i))
+		f.write('\twrite=0; #5;\n')
+	f.write('\tsumTrigger=1; #5;\n')
+	f.write('\tsumTrigger=0; #5;\n')
+	f.write('end\n\n')
+	
 	f.write('always #1 clk= ~clk;\n\n')
 	f.write('endmodule\n')
