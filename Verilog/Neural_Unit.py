@@ -1,11 +1,11 @@
 import unit_generation
 import math
 
-def UnitLayer(numUnits):
-	f= open('Unit_Layer.v', 'w')
-	f.write(unit_generation.header('Unitlayer', 'For '+str(numUnits)+' units'))
+def NeuralUnit(numUnits):
+	f= open('Neural_Unit.v', 'w')
+	f.write(unit_generation.header('NeuralUnit', 'For '+str(numUnits)+' units'))
 	
-	f.write('module UnitLayer(\n')
+	f.write('module NeuralUnit(\n')
 	for i in range(numUnits):
 		f.write('\tinput [31:0] input'+str(i)+',\n')
 	f.write('\tinput [7:0] weight,\n')
@@ -14,11 +14,15 @@ def UnitLayer(numUnits):
 	f.write('\tinput write,\n')
 	f.write('\tinput sumTrigger,\n')
 	f.write('\tinput layer_Sel,\n')
+	f.write('\tinput activate,\n')
 	f.write('\tinput clk,\n')
-	f.write('\toutput [31:0] layerOut,\n')
+	f.write('\toutput reg [31:0] layerOut,\n')
 	f.write('\toutput layerDone\n')
 	f.write('\t);\n\n')
 	
+	#create outputReg
+	#f.write('\t//Reg\n')
+	#f.write('\treg [31:0] outReg;\n\n')
 	#create wires
 	f.write('\t//Wires\n')
 	for i in range(numUnits):
@@ -27,8 +31,11 @@ def UnitLayer(numUnits):
 		f.write('\twire [31:0] shiftWire'+str(i)+';\n')
 	f.write('\twire [31:0] sumWire;\n')
 	f.write('\twire [31:0] elliotWire;\n')
+	f.write('\twire [31:0] layerMuxOut;\n')
 	f.write('\twire elliot_end_signal;\n')
-	f.write('\twire sum_end_signal;\n\n')
+	f.write('\twire sum_end_signal;\n')
+	#f.write('\tparameter unactivated 32\'h00000000;\n')
+	
 	
 	#create the weight reg block
 	f.write('\t//Create weight reg block\n')
@@ -52,20 +59,30 @@ def UnitLayer(numUnits):
 	
 	#create layer mux
 	f.write('\t//Create layer mux\n')
-	f.write('\tLayerMux layer(sumWire, elliotWire, sum_end_signal, elliot_end_signal, layer_Sel, layerOut, layerDone);\n\n')
+	f.write('\tLayerMux layer(sumWire, elliotWire, sum_end_signal, elliot_end_signal, layer_Sel, layerMuxOut, layerDone);\n\n')
 	
 	#create shifters
 	f.write('\t//Create shifters\n')
 	for i in range(numUnits):
 		f.write('\tShifter shifter'+str(i)+'(input'+str(i)+', weightWire'+str(i)+', clk, shiftWire'+str(i)+');\n')
+	
+#	f.write('\n\tassign layerOut = outReg;\n')
+	
+	f.write('\n\talways @ (activate or layerMuxOut) begin\n')
+	f.write('\t\tcase(activate)\n')
+	f.write('\t\t1\'b0: layerOut <= 0;\n')
+	f.write('\t\t1\'b1: layerOut <= layerMuxOut;\n')
+	f.write('\t\tdefault: layerOut <= 0;\n')
+	f.write('\t\tendcase\n')
+	f.write('\tend\n\n')
 	f.write('endmodule')
 
-def UnitLayer_tb(numUnits):
-	f = open('UnitLayer_tb.v', 'w')
+def NeuralUnit_tb(numUnits):
+	f = open('NeuralUnit_tb.v', 'w')
 	f.write('`timescale 1ns / 1ps\n')
-	f.write(unit_generation.header('UnitLayer Test Fixture', ' '))
+	f.write(unit_generation.header('NeuralUnit Test Fixture', ' '))
 	
-	f.write('module UnitLayer_tb();\n')
+	f.write('module NeuralUnit_tb();\n')
 	for i in range(numUnits):
 		f.write('reg [31:0] input{};\n'.format(i))
 	f.write('reg [7:0] weight;\n')
@@ -79,7 +96,7 @@ def UnitLayer_tb(numUnits):
 	f.write('wire [31:0] layerOut;\n')
 	f.write('wire layerDone;\n')
 	
-	f.write('UnitLayer UUT(')
+	f.write('NeuralUnit UUT(')
 	for i in range(numUnits):
 		f.write('input{}, '.format(i))
 	f.write('weight, address, write, sumTrigger, layer_Sel, clk, layerOut, layerDone);\n\n')
