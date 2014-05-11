@@ -6,7 +6,7 @@ import random
 import math
 import Weight_Reg_Bank
 import Data_Reg_Bank
-import Unit_Layer_Gen
+import Neural_Unit
 import Multi_Sum
 
 def header(module, description):
@@ -30,8 +30,8 @@ def main():
 	Weight_Reg_Bank.WeightRegBankTB(numUnits)
 	Data_Reg_Bank.DataRegBank(numUnits)
 	Data_Reg_Bank.DataRegBankTB(numUnits)
-	Unit_Layer_Gen.UnitLayer(numUnits)
-	Unit_Layer_Gen.UnitLayer_tb(numUnits)
+	Neural_Unit.NeuralUnit(numUnits)
+	Neural_Unit.NeuralUnit_tb(numUnits)
 	Multi_Sum.MultiSum(numUnits)
 	Multi_Sum.MultiSumTB(numUnits)
 	
