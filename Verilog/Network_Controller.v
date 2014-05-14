@@ -18,15 +18,15 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Network_Controller(start,done, RAM_done,reset,clk,layer_sel,sum_trigger,output_sel,RAM_Controll_Start);
+module Network_Controller(start,done, RAM_done,reset,clk,layer_sel,layer,sum_trigger,output_sel,RAM_Controll_Start);
 input start, done, RAM_done, reset, clk;
 output reg layer_sel;
+reg [1:0] layer;
 output reg sum_trigger;
 output reg [N:0] output_sel, activate;
 output reg RAM_Controll_Start;
 
 reg state, nextState;
-reg [1:0] layer_sel;
 
 always @ (posedge clk)
 	if(reset==1) state <= 0;
