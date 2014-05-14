@@ -18,9 +18,10 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Network_Controller(start,done, RAM_done,reset,clk,layer_sel,sum_trigger,output_sel,RAM_Controll_Start);
+module Network_Controller(start,done, RAM_done,reset,clk,layer_sel,layer,sum_trigger,output_sel,RAM_Controll_Start);
 input start, done, RAM_done, reset, clk;
-output reg [1:0] layer_sel;
+output reg layer_sel;
+reg [1:0] layer;
 output reg sum_trigger;
 output reg [N:0] output_sel, activate;
 output reg RAM_Controll_Start;
@@ -34,7 +35,8 @@ always @ (posedge clk)
 always @ (state,start,RAM_done) begin
 	case(state)
 		0: begin
-			layer_sel <= 0;
+			layer <= 0;
+			layer_sel <= ?;
 			sum_trigger <= 0;
 			output_sel <= 0;
 			RAM_Controll_Start <= 0;
@@ -44,14 +46,16 @@ always @ (state,start,RAM_done) begin
 				nextState<=0;
 			end
 		1: begin
-			layer_sel <= layer_sel;
+			layer <= layer;
+			layer_sel <= ?;
 			sum_trigger <= 0;
 			output_sel <= 0;
 			RAM_Controll_Start <= 1;
 			nextState<=2;
 			end
 		2: begin
-			layer_sel <= layer_sel;
+			layer <= layer;
+			layer_sel <= ?;
 			sum_trigger <= 0;
 			output_sel <= 0;
 			RAM_Controll_Start <= 0;
@@ -61,14 +65,16 @@ always @ (state,start,RAM_done) begin
 				nextState<=2;
 			end
 		3: begin
-			layer_sel <= layer_sel;
+			layer <= layer;
+			layer_sel <= ?;
 			sum_trigger <= 1;
 			output_sel <= 0;
 			RAM_Controll_Start <= 0;
 			nextState <= 4;
 			end
 		4: begin
-			layer_sel <= layer_sel;
+			layer <= layer;
+			layer_sel <= ?;
 			sum_trigger <= 0;
 			output_sel <= 0;
 			if(done==1)
@@ -77,16 +83,18 @@ always @ (state,start,RAM_done) begin
 				nextState <= 4;
 			end
 		5: begin
-			if(layer_sel == 2) begin
-				layer_sel <= 0;
+			if(layer == 2) 
+				layer <= 0;
 			else
-				layer_sel <= layer_sel + 1;
+				layer <= layer + 1;
+			layer_sel <= ?;
 			sum_trigger <= 0;
 			output_sel <= 0;
 			nextState <= 0;
 			end
 		default: begin
-			layer_sel <= 0;
+			layer <= 0;
+			layer_sel <= ?;
 			sum_trigger <= 0;
 			output_sel <= 0;
 			nextState <= 0;
