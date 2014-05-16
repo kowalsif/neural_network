@@ -14,9 +14,9 @@ def NeuralUnit(numUnits):
 	f.write('\tinput write,\n')
 	f.write('\tinput sumTrigger,\n')
 	f.write('\tinput layer_Sel,\n')
-	f.write('\tinput activate,\n')
+#	f.write('\tinput activate,\n')
 	f.write('\tinput clk,\n')
-	f.write('\toutput reg [31:0] layerOut,\n')
+	f.write('\toutput [31:0] layerOut,\n')
 	f.write('\toutput layerDone\n')
 	f.write('\t);\n\n')
 	
@@ -31,7 +31,7 @@ def NeuralUnit(numUnits):
 		f.write('\twire [31:0] shiftWire'+str(i)+';\n')
 	f.write('\twire [31:0] sumWire;\n')
 	f.write('\twire [31:0] elliotWire;\n')
-	f.write('\twire [31:0] layerMuxOut;\n')
+#	f.write('\twire [31:0] layerMuxOut;\n')
 	f.write('\twire elliot_end_signal;\n')
 	f.write('\twire sum_end_signal;\n')
 	#f.write('\tparameter unactivated 32\'h00000000;\n')
@@ -59,7 +59,7 @@ def NeuralUnit(numUnits):
 	
 	#create layer mux
 	f.write('\t//Create layer mux\n')
-	f.write('\tLayerMux layer(sumWire, elliotWire, sum_end_signal, elliot_end_signal, layer_Sel, layerMuxOut, layerDone);\n\n')
+	f.write('\tLayerMux layer(sumWire, elliotWire, sum_end_signal, elliot_end_signal, layer_Sel, layerOut, layerDone);\n\n')
 	
 	#create shifters
 	f.write('\t//Create shifters\n')
@@ -68,13 +68,14 @@ def NeuralUnit(numUnits):
 	
 #	f.write('\n\tassign layerOut = outReg;\n')
 	
-	f.write('\n\talways @ (activate or layerMuxOut) begin\n')
-	f.write('\t\tcase(activate)\n')
-	f.write('\t\t1\'b0: layerOut <= 0;\n')
-	f.write('\t\t1\'b1: layerOut <= layerMuxOut;\n')
-	f.write('\t\tdefault: layerOut <= 0;\n')
-	f.write('\t\tendcase\n')
-	f.write('\tend\n\n')
+#	f.write('\n\talways @ (activate or layerMuxOut) begin\n')
+#	f.write('\t\tcase(activate)\n')
+#	f.write('\t\t1\'b0: layerOut <= 0;\n')
+#	f.write('\t\t1\'b1: layerOut <= layerMuxOut;\n')
+#	f.write('\t\tdefault: layerOut <= 0;\n')
+#	f.write('\t\tendcase\n')
+#	f.write('\tend\n\n')
+
 	f.write('endmodule')
 
 def NeuralUnit_tb(numUnits):
