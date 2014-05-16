@@ -18,11 +18,11 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Network_Controller(start,done,reset,clk,layer_sel,layer,sum_trigger,RAM_Controll_Start);
+module Network_Controller(start,done,reset,clk,layer_sel,layer,RAM_Controll_Start);
 input start, done, reset, clk;
 output reg layer_sel;
 output reg [1:0] layer;
-output reg sum_trigger;
+
 //output reg [N:0] output_sel;
 output reg RAM_Controll_Start;
 
@@ -38,11 +38,10 @@ always @ (layer)
 	else
 		layer_sel <=1;
 	
-always @ (state,start,RAM_done) begin
+always @ (state,start) begin
 	case(state)
 		0: begin
 			layer <= 0;
-			sum_trigger <= 0;
 //			output_sel <= 0;
 			RAM_Controll_Start <= 0;
 			if(start==1)
@@ -52,14 +51,13 @@ always @ (state,start,RAM_done) begin
 			end
 		1: begin
 			layer <= layer;
-			sum_trigger <= 0;
 //			output_sel <= 0;
 			RAM_Controll_Start <= 1;
 			nextState<=2;
 			end
 		2: begin
 			layer <= layer;
-			sum_trigger <= 0;
+			RAM_Controll_Start <= 0;
 //			output_sel <= 0;
 			if(done==1)
 				nextState <= 3;
@@ -75,13 +73,13 @@ always @ (state,start,RAM_done) begin
 				layer <= layer + 1;
 				nextState <= 1;
 			end
-			sum_trigger <= 0;
+			RAM_Controll_Start <= 0;
 //			output_sel <= 0;
 			end
 		default: begin
 			layer <= 0;
-			sum_trigger <= 0;
 //			output_sel <= 0;
+			RAM_Controll_Start <= 0;
 			nextState <= 0;
 			end
 	endcase
