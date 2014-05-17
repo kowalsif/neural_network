@@ -3,7 +3,7 @@ import math
 
 def RAMReadDriver(numUnits):
 	address = int(math.ceil(math.log(numUnits)/math.log(2)))
-	f = open('RAM_Read_Driver_PY.v', 'w')
+	f = open('RAM_Read_Driver.v', 'w')
 	f.write('`timescale 1ns / 1ps\n')
 	f.write(unit_generation.header('RAMReadDriver', 'For '+str(numUnits)+' units'))
 	f.write('module RAM_Read_Driver(start,layer,reset,clk,RAM_address,unit_sel,unit_address,write,sum_trigger);\n')
