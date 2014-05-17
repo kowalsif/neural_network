@@ -24,8 +24,9 @@ module ROM_Controller_tb( );
 reg start;
 reg clk;
 reg reset;
-
 wire [0:31] rom_output;
+wire [1:0] address;
+wire writeData;
 wire start_network_controller;
 
 ROM_Controller UUT(
@@ -33,14 +34,16 @@ ROM_Controller UUT(
     clk,
     reset,
     rom_output,
+	address,
+	writeData,
     start_network_controller
     );
     
 initial begin
 start=0; clk=0; reset =1; #5;
 reset=0; start=0; #10;
-reset=0; start=1; #10;
-reset=0; start=0; #5;
+reset=0; start=1; #5;
+reset=0; start=0; #40;
 
 $stop;
 end
