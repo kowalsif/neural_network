@@ -43,6 +43,7 @@ def WeightRegBank(numUnits):
 	f.write('	end\n')
 	f.write('end\n')
 	f.write('endmodule\n')
+	f.close()
 	
 def WeightRegBankTB(numUnits):
 	f = open('Weight_Reg_Bank_TB.v', 'w')
@@ -77,3 +78,4 @@ def WeightRegBankTB(numUnits):
 	f.write('always #1 clk = ~clk;\n\n')
 	
 	f.write('endmodule')
+	f.close()
