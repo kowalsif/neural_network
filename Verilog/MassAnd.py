@@ -1,10 +1,10 @@
-#import unit_generation
+import unit_generation
 import math
 
 def MassAnd(numUnits):
     f = open('MassAnd_py.v', 'w')
     f.write('`timescale 1ns / 1ps\n')
-    #f.write(unit_generation.header('RAMMux_py', ' '))
+    f.write(unit_generation.header('RAMMux_py', ' '))
     
     #module declaration
     f.write('module MassAnd_py(\n')

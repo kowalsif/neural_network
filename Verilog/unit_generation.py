@@ -8,6 +8,8 @@ import Weight_Reg_Bank
 import Data_Reg_Bank
 import Neural_Unit
 import Multi_Sum
+import RAM_MUX
+import MassAnd
 
 def header(module, description):
 	names = ['Neural Network', 'FPGA Brain', 'Brain Network', 'Distributed Brain']
@@ -34,6 +36,9 @@ def main():
 	Neural_Unit.NeuralUnit_tb(numUnits)
 	Multi_Sum.MultiSum(numUnits)
 	Multi_Sum.MultiSumTB(numUnits)
+	MassAnd.MassAnd(numUnits)
+	RAM_MUX.RamMux(numUnits)
+	
 	
 	
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 // 
 // Module Name: NeuralUnit
-// Project Name: Brain Network
+// Project Name: FPGA Brain
 // Description: For 4 units
 // 
 //////////////////////////////////////////////////////////////////////////////////
@@ -16,9 +16,8 @@ module NeuralUnit(
 	input write,
 	input sumTrigger,
 	input layer_Sel,
-	input activate,
 	input clk,
-	output reg [31:0] layerOut,
+	output [31:0] layerOut,
 	output layerDone
 	);
 
@@ -33,7 +32,6 @@ module NeuralUnit(
 	wire [31:0] shiftWire3;
 	wire [31:0] sumWire;
 	wire [31:0] elliotWire;
-	wire [31:0] layerMuxOut;
 	wire elliot_end_signal;
 	wire sum_end_signal;
 	//Create weight reg block
@@ -46,20 +44,11 @@ module NeuralUnit(
 	MultiSum summer(shiftWire0,shiftWire1,shiftWire2,shiftWire3,sumTrigger, clk, sumWire, sum_end_signal);
 
 	//Create layer mux
-	LayerMux layer(sumWire, elliotWire, sum_end_signal, elliot_end_signal, layer_Sel, layerMuxOut, layerDone);
+	LayerMux layer(sumWire, elliotWire, sum_end_signal, elliot_end_signal, layer_Sel, layerOut, layerDone);
 
 	//Create shifters
 	Shifter shifter0(input0, weightWire0, clk, shiftWire0);
 	Shifter shifter1(input1, weightWire1, clk, shiftWire1);
 	Shifter shifter2(input2, weightWire2, clk, shiftWire2);
 	Shifter shifter3(input3, weightWire3, clk, shiftWire3);
-
-	always @ (activate or layerMuxOut) begin
-		case(activate)
-		1'b0: layerOut <= 0;
-		1'b1: layerOut <= layerMuxOut;
-		default: layerOut <= 0;
-		endcase
-	end
-
 endmodule

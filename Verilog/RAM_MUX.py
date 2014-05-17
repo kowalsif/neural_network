@@ -1,10 +1,10 @@
-#import unit_generation
+import unit_generation
 import math
 
 def RamMux(numUnits):
     f = open('RAMMux_py.v', 'w')
     f.write('`timescale 1ns / 1ps\n')
-    #f.write(unit_generation.header('RAMMux_py', ' '))
+    f.write(unit_generation.header('RAMMux_py', ' '))
     
     #module declaration
     f.write('module RAMMux_py(\n')
@@ -53,7 +53,7 @@ def RamMux(numUnits):
 def RAM_M_TB(numUnits):
     f = open('RAM_Mux_TB_PY.v', 'w')
     f.write('`timescale 1ns / 1ps\n')
-#    f.write(unit_generation.header('MultiSum Test Fixture', ' '))
+    f.write(unit_generation.header('MultiSum Test Fixture', ' '))
 #	
     f.write('module RAM_Mux_TB();\n')
     f.write('reg [31:0] ram_out;\n')
