@@ -10,6 +10,7 @@ import Neural_Unit
 import Multi_Sum
 import RAM_MUX
 import MassAnd
+import RAM_Read_Driver
 
 def header(module, description):
 	names = ['Neural Network', 'FPGA Brain', 'Brain Network', 'Distributed Brain']
@@ -28,16 +29,18 @@ def header(module, description):
 def main():
 	numUnits = int(sys.argv[1])
 	random.seed()
-	Weight_Reg_Bank.WeightRegBank(numUnits)
-	Weight_Reg_Bank.WeightRegBankTB(numUnits)
-	Data_Reg_Bank.DataRegBank(numUnits)
-	Data_Reg_Bank.DataRegBankTB(numUnits)
-	Neural_Unit.NeuralUnit(numUnits)
-	Neural_Unit.NeuralUnit_tb(numUnits)
-	Multi_Sum.MultiSum(numUnits)
-	Multi_Sum.MultiSumTB(numUnits)
-	MassAnd.MassAnd(numUnits)
-	RAM_MUX.RamMux(numUnits)
+	#Weight_Reg_Bank.WeightRegBank(numUnits)
+	#Weight_Reg_Bank.WeightRegBankTB(numUnits)
+	#Data_Reg_Bank.DataRegBank(numUnits)
+	#Data_Reg_Bank.DataRegBankTB(numUnits)
+	#Neural_Unit.NeuralUnit(numUnits)
+	#Neural_Unit.NeuralUnit_tb(numUnits)
+	#Multi_Sum.MultiSum(numUnits)
+	#Multi_Sum.MultiSumTB(numUnits)
+	#MassAnd.MassAnd(numUnits)
+	#RAM_MUX.RamMux(numUnits)
+	RAM_Read_Driver.RAMReadDriver(numUnits)
+	
 	
 	
 	
