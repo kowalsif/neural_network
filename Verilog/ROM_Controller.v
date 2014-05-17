@@ -24,7 +24,7 @@ module ROM_Controller(
     input start,
     input clk,
     input reset,
-    output [0:31] rom_output,
+    output reg [0:31] rom_output,
 	output reg [1:0] address,
 	output reg writeData,
     output reg start_network_controller
@@ -34,20 +34,23 @@ module ROM_Controller(
     reg [1:0] state;
     reg [1:0] nextstate;
     reg [3:0] currentUnit;
+    wire rom_data;
     
     always @ (posedge clk)begin
         if(reset == 1)begin state <=0; nextstate <=0; end
         else state<=nextstate;
     end
     
+    
     always @ (posedge start or state) begin
         case(state)
             0: begin
-					rom_addr<=0;
+					rom_addr<=1;
 					address<=0;
 					writeData<=0;
 					start_network_controller <=0;
 					currentUnit <=0;
+					rom_output <= rom_data;
 					
                     if(start == 1)
                         nextstate <= 1;
@@ -61,6 +64,7 @@ module ROM_Controller(
 					writeData<=1;
 					start_network_controller <=0;
 					currentUnit <=currentUnit;
+					rom_output <= rom_output;
 					
                     nextstate<=2;
                 end
@@ -71,6 +75,7 @@ module ROM_Controller(
 					writeData<=0;
 					start_network_controller <=0;
 					currentUnit <=currentUnit +1;
+					rom_output <= rom_output;
 					
 					nextstate<=3;
 				end
@@ -79,10 +84,12 @@ module ROM_Controller(
                     if(currentUnit !=4) begin
                         nextstate<=1;
 						start_network_controller <=0;
+						rom_output <= 0;
 					end
                     else begin
                         nextstate<=0;
 						start_network_controller <=1;
+						rom_output <= rom_output;
 					end
 					rom_addr<= rom_addr;
 					address<=address;
@@ -95,6 +102,7 @@ module ROM_Controller(
 					address<=address;
 					writeData<=1;
 					currentUnit <=0;
+					rom_output <= 0;
              end
          endcase
     end
@@ -103,7 +111,7 @@ module ROM_Controller(
       .clka(clk),    // input wire clka
       .ena(1'b1),      // input wire ena
       .addra(rom_addr),  // input wire [31 : 0] addra
-      .douta(rom_output)  // output wire [31 : 0] douta
+      .douta(rom_data)  // output wire [31 : 0] douta
     );
     // INST_TAG_END ------ End INSTANTIATION Template ---------
 endmodule
