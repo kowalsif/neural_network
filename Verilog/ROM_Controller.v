@@ -31,18 +31,23 @@ module ROM_Controller(
     );
 //    parameter rom_addr = 32'h00000003;
 	reg [31:0] rom_addr;
-    reg [1:0] state;
-    reg [1:0] nextstate;
+    reg [1:0] state=0;
+    reg [1:0] nextstate=0;
     reg [3:0] currentUnit;
     wire rom_data;
+    wire debouncedStart;
+    wire oneShotStart;
+    
+    DebouncerWithoutLatch debounce(start, debouncedStart, reset, clk);
+    ClockedOneShot oneShot(debouncedStart, oneShotStart, reset, clk);
     
     always @ (posedge clk)begin
-        if(reset == 1)begin state <=0; nextstate <=0; end
+        if(reset == 1)begin state <=0; end
         else state<=nextstate;
     end
     
     
-    always @ (posedge start or state) begin
+    always @ (oneShotStart or state) begin
         case(state)
             0: begin
 					rom_addr<=1;
@@ -52,7 +57,7 @@ module ROM_Controller(
 					currentUnit <=0;
 					rom_output <= rom_data;
 					
-                    if(start == 1)
+                    if(oneShotStart == 1)
                         nextstate <= 1;
                     else
                         nextstate<=0;

@@ -41,11 +41,13 @@ ROM_Controller UUT(
     
 initial begin
 start=0; clk=0; reset =1; #5;
-reset=0; start=0; #10;
-reset=0; start=1; #5;
-reset=0; start=0; #40;
+reset=0; start=1; #10;
 
-$stop;
+end
+
+always @(posedge UUT.debounce.Timeout)begin
+    #100;
+    $stop;
 end
 
 always #1 clk = ~clk;
