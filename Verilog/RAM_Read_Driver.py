@@ -10,7 +10,7 @@ def RAMReadDriver(numUnits):
 	f.write('input start,reset,clk;\n')
 	f.write('input [1:0] layer;\n')
 	f.write('output reg [31:0] RAM_address;\n')
-	f.write('output reg [{}:0] unit_sel,unit_address;\n'.format(address))
+	f.write('output reg [{}:0] unit_sel,unit_address;\n'.format(address-1))
 	f.write('output reg write, sum_trigger;\n\n')
 	
 	f.write('reg [{}:0] state, nextstate, count, unitcount;\n\n'.format(address))
@@ -26,7 +26,7 @@ def RAMReadDriver(numUnits):
 	
 	#state 0
 	f.write('\t\t0: begin\n')
-	f.write('\t\t\tRAM_address <= 0;\n')
+	f.write('\t\t\tRAM_address <= 0+layer*'+str(numUnits)+';\n')
 	f.write('\t\t\tunit_sel <= 0;\n')
 	f.write('\t\t\tunit_address <= 0;\n')
 	f.write('\t\t\twrite <= 0;\n')
