@@ -38,54 +38,71 @@ always @ (layer)
 	else
 		layer_sel <=1;
 
-always @ (posedge clk) begin //state
-    if(state == 0) begin 
-        layer <= 0;
-    end else if(state == 3) begin
-        if(layer == 3) begin
-            layer <= 0;
-        end
-        else begin
-            layer <= layer+1;
-        end
-    end else begin
-        layer<= layer;
-    end
-end
-	
-always @ (state or start or done or layer) begin
+always @ (state,start,done) begin
 	case(state)
 		0: begin
-			RAM_Controll_Start <= 0;
 			if(start==1)
 				nextState<=1;
 			else
 				nextState<=0;
 			end
 		1: begin
-			RAM_Controll_Start <= 1;
 			nextState<=2;
 			end
 		2: begin
-			RAM_Controll_Start <= 0;
 			if(done==1)
 				nextState <= 3;
 			else
 				nextState <= 2;
 			end
 		3: begin
-			if(layer == 3)begin
+			if(layer == 2)
 				nextState <= 0;
-			end
-			else begin
+			else
 				nextState <= 1;
 			end
-			RAM_Controll_Start <= 0;
-			end
 		default: begin
-			RAM_Controll_Start <= 0;
 			nextState <= 0;
 			end
 	endcase
 end
+
+always @ (posedge clk) begin
+	if(reset == 1) begin
+		layer <= 0;
+//		output_sel <= 0;
+		RAM_Controll_Start <= 0;
+		end
+	else case(state)
+		0: begin
+			layer <= 0;
+//			output_sel <= 0;
+			RAM_Controll_Start <= 0;
+			end
+		1: begin
+			layer <= layer;
+//			output_sel <= 0;
+			RAM_Controll_Start <= 1;
+			end
+		2: begin
+			layer <= layer;
+//			output_sel <= 0;
+			RAM_Controll_Start <= 0;
+			end
+		3: begin
+			if(layer == 2)
+				layer <= 0;
+			else
+				layer <= layer + 1;
+//			output_sel <= 0;
+			RAM_Controll_Start <= 0;
+			end
+		default: begin
+			layer <= 0;
+//			output_sel <= 0;
+			RAM_Controll_Start <= 0;
+			end
+	endcase
+end
+
 endmodule

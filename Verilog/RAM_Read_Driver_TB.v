@@ -31,11 +31,14 @@ module RAM_Read_Driver_TB;
 	reg clk;
 
 	// Outputs
-	wire [31:0] RAM_address;
-	wire [2:0] unit_sel;
-	wire [2:0] unit_address;
+	wire [9:0] RAM_address;
+	wire [1:0] unit_sel;
+	wire [1:0] unit_address;
 	wire write;
 	wire sum_trigger;
+	
+	wire [2:0] state, nextstate;
+	wire [2:0] count, unitcount;
 
 	// Instantiate the Unit Under Test (UUT)
 	RAM_Read_Driver uut (
@@ -49,6 +52,11 @@ module RAM_Read_Driver_TB;
 		.write(write),
 		.sum_trigger(sum_trigger)
 	);
+	
+	assign state = uut.state;
+	assign nextstate = uut.nextstate;
+	assign count = uut.count;
+	assign unitcount = uut.count;
 
 	initial begin
 		// Initialize Inputs
@@ -59,7 +67,9 @@ module RAM_Read_Driver_TB;
 	end
 	
 	always @ (sum_trigger)
-		if(sum_trigger==1) begin #5; $stop; end
+		if(sum_trigger==1) 
+			if(layer == 2) begin #10; $stop; end
+			else begin #10; layer = layer + 1; #5; start = 1; #2; start = 0; end
 	
 	always #2 clk = ~clk;
       
