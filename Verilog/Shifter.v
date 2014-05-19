@@ -22,14 +22,20 @@ input [7:0] power;
 input clk;
 output reg [31:0] result;
 
-    always @ (posedge clk) begin
-		if(power[7] == 1) begin
-			$display("%d", -power);
-			//result <= base >> ~power + 1'b1;
-			result <= base >> -power;
-		end else begin
-			result <= base << power;
-		end
-    end
+reg [31:0] internalBase;
+
+always @ (base)begin
+    internalBase <=base;
+end
+
+always @ (posedge clk) begin
+    if(power[7] == 1) begin
+	   $display("%d", -power);
+		//result <= base >> ~power + 1'b1;
+		result <= internalBase >> -power;
+	end else begin
+		result <= internalBase << power;
+	end
+end
 
 endmodule

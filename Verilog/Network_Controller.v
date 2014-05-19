@@ -27,6 +27,7 @@ output reg [1:0] layer;
 output reg RAM_Controll_Start;
 
 reg [1:0] state, nextState;
+wire oneShotStart;
 
 always @ (posedge clk)
 	if(reset==1) state <= 0;
@@ -37,12 +38,25 @@ always @ (layer)
 		layer_sel <=0;
 	else
 		layer_sel <=1;
+
+always @ (state) begin
+    if(state == 0) begin 
+        layer <= 0;
+    end else if(state == 3) begin
+        if(layer == 3) begin
+            layer <= 0;
+        end
+        else begin
+            layer <= layer+1;
+        end
+    end else begin
+        layer<= layer;
+    end
+end
 	
-always @ (state,start) begin
+always @ (state or start or done or layer) begin
 	case(state)
 		0: begin
-			layer <= 0;
-//			output_sel <= 0;
 			RAM_Controll_Start <= 0;
 			if(start==1)
 				nextState<=1;
@@ -50,35 +64,26 @@ always @ (state,start) begin
 				nextState<=0;
 			end
 		1: begin
-			layer <= layer;
-//			output_sel <= 0;
 			RAM_Controll_Start <= 1;
 			nextState<=2;
 			end
 		2: begin
-			layer <= layer;
 			RAM_Controll_Start <= 0;
-//			output_sel <= 0;
 			if(done==1)
 				nextState <= 3;
 			else
 				nextState <= 2;
 			end
 		3: begin
-			if(layer == 2)begin
-				layer <= 0;
+			if(layer == 3)begin
 				nextState <= 0;
 			end
 			else begin
-				layer <= layer + 1;
 				nextState <= 1;
 			end
 			RAM_Controll_Start <= 0;
-//			output_sel <= 0;
 			end
 		default: begin
-			layer <= 0;
-//			output_sel <= 0;
 			RAM_Controll_Start <= 0;
 			nextState <= 0;
 			end

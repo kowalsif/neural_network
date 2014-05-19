@@ -30,11 +30,11 @@ module ROM_Controller(
     output reg start_network_controller
     );
 //    parameter rom_addr = 32'h00000003;
-	reg [31:0] rom_addr;
+	reg [4:0] rom_addr;
     reg [1:0] state=0;
     reg [1:0] nextstate=0;
     reg [3:0] currentUnit;
-    wire rom_data;
+    wire [31:0] rom_data;
     wire debouncedStart;
     wire oneShotStart;
     
@@ -112,7 +112,7 @@ module ROM_Controller(
          endcase
     end
     //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
-    blk_mem_gen_1 blk_rom (
+    blk_mem_gen_0 blk_rom (
       .clka(clk),    // input wire clka
       .ena(1'b1),      // input wire ena
       .addra(rom_addr),  // input wire [31 : 0] addra
