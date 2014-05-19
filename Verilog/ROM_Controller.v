@@ -47,10 +47,10 @@ module ROM_Controller(
     end
     
     
-    always @ (oneShotStart or state) begin
+    always @ (posedge clk) begin //oneShotStart or state
         case(state)
             0: begin
-					rom_addr<=1;
+					rom_addr<=0;
 					address<=0;
 					writeData<=0;
 					start_network_controller <=0;
