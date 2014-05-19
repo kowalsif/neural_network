@@ -11,6 +11,7 @@ import Multi_Sum
 import RAM_MUX
 import MassAnd
 import RAM_Read_Driver
+import Network
 
 def header(module, description):
 	names = ['Neural Network', 'FPGA Brain', 'Brain Network', 'Distributed Brain']
@@ -40,6 +41,8 @@ def main():
 	MassAnd.MassAnd(numUnits)
 	RAM_MUX.RamMux(numUnits)
 	RAM_Read_Driver.RAMReadDriver(numUnits)
+	NetworkUnit(numUnits)
+	
 	
 	
 	
