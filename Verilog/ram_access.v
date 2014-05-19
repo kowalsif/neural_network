@@ -29,7 +29,7 @@ module ram_access(
     );
     
     
-    RAM your_instance_name (
+    blk_mem_gen_1 your_instance_name (
       .clka(CLOCK),    // input wire clka
       .ena(1'b1),      // input wire ena
       .wea(write),      // input wire [0 : 0] wea
