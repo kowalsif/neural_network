@@ -27,7 +27,6 @@ output reg [1:0] layer;
 output reg RAM_Controll_Start;
 
 reg [1:0] state, nextState;
-wire oneShotStart;
 
 always @ (posedge clk)
 	if(reset==1) state <= 0;
@@ -39,7 +38,7 @@ always @ (layer)
 	else
 		layer_sel <=1;
 
-always @ (state) begin
+always @ (posedge clk) begin //state
     if(state == 0) begin 
         layer <= 0;
     end else if(state == 3) begin

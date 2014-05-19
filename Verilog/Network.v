@@ -24,7 +24,8 @@ module Network(
     input reset,
     input sysclk,
     output done,
-    output rez
+    output rez,
+    output [31:0] result 
     );
 
     
@@ -34,20 +35,21 @@ wire [1:0] layer,unit_addr,rom_address;
 wire [1:0] unit_sel,unit_address;
 wire [31:0] weight0,weight1,weight2,weight3;
 wire [9:0] ram_addr,RAM_address;
-wire [31:0] ram_out,input0n0,input1n0,input2n0,input3n0,layerOutn0,out0,out1,out2,out3,layerOutn1,layerOutn2,layerOutn3,rom_output;
+wire [31:0] ram_out,input0n0,input1n0,input2n0,input3n0,out0,out1,out2,out3,layerOutn0,layerOutn1,layerOutn2,layerOutn3,rom_output;
 
 //assign clk = sysclk;
+assign result = layerOutn0;
 
 
-clk_wiz_0 clock
-   (
-   // Clock in ports
-    .clk_in1(sysclk),      // input clk_in1
-    // Clock out ports
-    .clk_out1(clk),     // output clk_out1
-    // Status and control signals
-    .reset(reset),// input reset
-    .locked(lock));      // output locked
+//clk_wiz_0 clock
+//   (
+//   // Clock in ports
+//    .clk_in1(sysclk),      // input clk_in1
+//    // Clock out ports
+//    .clk_out1(clk),     // output clk_out1
+//    // Status and control signals
+//    .reset(reset),// input reset
+//    .locked(lock));      // output locked
 
 
 

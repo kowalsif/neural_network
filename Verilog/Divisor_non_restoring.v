@@ -36,6 +36,8 @@ reg [31:0] divisor;
 reg rev; //tell us whether or not to set it negative. 
 wire test = remainderlh[31];
 
+//TODO: Add reset
+
 always@(posedge CLOCK)
     begin
     if (state <= 15)
