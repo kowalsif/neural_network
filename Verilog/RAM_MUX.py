@@ -4,7 +4,7 @@ import math
 def RamMux(numUnits):
     f = open('RAMMux.v', 'w')
     f.write('`timescale 1ns / 1ps\n')
-    f.write(unit_generation.header('RAMMux_py', ' '))
+    f.write(unit_generation.header('RAMMux', ' '))
     
     #module declaration
     f.write('module RAMMux_py(\n')
@@ -20,7 +20,7 @@ def RamMux(numUnits):
     
     #output declaration
     for i in range(0, numUnits):
-        f.write('output reg [31:0] weight'+str(i)+',')
+        f.write('output reg [7:0] weight'+str(i)+',')
         f.write('output reg write'+str(i))
         if (i != numUnits-1):
             f.write(',\n')
@@ -34,15 +34,15 @@ def RamMux(numUnits):
         f.write('\t'+str(i)+': begin\n')
         for j in range (0, numUnits):
             if (i != j):
-                f.write('\t\tweight'+str(j)+ '<=0;\n')
-                f.write('\t\twrite'+str(j)+'<=0;\n')
+                f.write('\t\tweight'+str(j)+ '<=8\'b00000000;\n')
+                f.write('\t\twrite'+str(j)+'<=1\'b0;\n')
             else:
-                f.write('\t\tweight'+str(j)+ '<=ram_out;\n')
+                f.write('\t\tweight'+str(j)+ '<=ram_out[7:0];\n')
                 f.write('\t\twrite'+str(j)+'<=write;\n')
         f.write('\t\tend\n')
     f.write('\tdefault: begin\n')
     for i in range(0,numUnits):
-        f.write('\t\tweight'+str(i)+ '<=0;\n')
+        f.write('\t\tweight'+str(i)+ '<=8\'b00000000;\n')
         f.write('\t\twrite'+str(i)+'<=0;\n')
     f.write('\t\tend\n')
     f.write('\tendcase\n\tend\n')
@@ -64,7 +64,7 @@ def RAM_M_TB(numUnits):
     
     #output declaration
     for i in range(0, numUnits):
-        f.write('wire [31:0] weight'+str(i)+';')
+        f.write('wire [7:0] weight'+str(i)+';')
         f.write(' wire write'+str(i)+';\n')
     f.write('\n\n')
 

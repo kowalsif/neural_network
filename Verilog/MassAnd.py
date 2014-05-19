@@ -2,9 +2,9 @@ import unit_generation
 import math
 
 def MassAnd(numUnits):
-    f = open('MassAnd_py.v', 'w')
+    f = open('MassAnd.v', 'w')
     f.write('`timescale 1ns / 1ps\n')
-    f.write(unit_generation.header('RAMMux_py', ' '))
+    f.write(unit_generation.header('RAMMux', ' '))
     
     #module declaration
     f.write('module MassAnd_py(\n')
@@ -25,6 +25,6 @@ def MassAnd(numUnits):
         if (i != numUnits-1):
             f.write(',')
     f.write(');\n\n')
-	f.write('ClockedOneShot shot(andDone, done, reset, CLOCK) ;\n\n')
+    f.write('ClockedOneShot shot(done, done, reset, CLOCK) ;\n\n')
     f.write('endmodule\n')
     
