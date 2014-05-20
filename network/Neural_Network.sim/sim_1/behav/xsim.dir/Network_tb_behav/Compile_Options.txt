@@ -1,0 +1,1 @@
+--debug "typical" --relax -L "xil_defaultlib" -L "blk_mem_gen_v8_2" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "Network_tb_behav" --prj "C:/Users/fendrirj/Vivado/network/Neural_Network.sim/sim_1/behav/Network_tb.prj" "xil_defaultlib.Network_tb" "xil_defaultlib.glbl" 

@@ -20,7 +20,9 @@ wire [1:0] state = UUT.state;
 
 initial begin
 	clk=0; start=0; done=0; reset=1; #5;
-	reset=0; start= 1; #2;
+	reset=0; #5;
+	start= 1; #2;
+	start = 0;
 end
 
 always @ (state)begin
@@ -30,9 +32,10 @@ always @ (state)begin
 		else
 			flag = 0;
 	end
-	else begin
-		done = 1;
-	end
+end
+
+always @ (posedge RAM_Controll_Start) begin
+	#10; done = 1; #2; done = 0;
 end
 
 always #1 clk = ~clk;

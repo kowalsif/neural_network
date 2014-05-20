@@ -1,0 +1,119 @@
+#-----------------------------------------------------------
+# Vivado v2014.1 (64-bit)
+# SW Build 881834 on Fri Apr  4 14:15:54 MDT 2014
+# IP Build 877625 on Fri Mar 28 16:29:15 MDT 2014
+# Start of session at: Sun May 18 16:26:34 2014
+# Process ID: 3836
+# Log file: C:/Users/fendrirj/Vivado/network/vivado.log
+# Journal file: C:/Users/fendrirj/Vivado/network\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:\Users\fendrirj\Vivado\network\Neural_Network.xpr}
+report_ip_status -name ip_status 
+update_compile_order -fileset sources_1
+remove_files C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Data_Reg_Bank_TB.v
+remove_files C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Elliot_Activation_tb.v
+remove_files C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/LayerMux_tb.v
+remove_files C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/MultiSum_TB_PY.v
+remove_files C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Network_Controller_tb.v
+remove_files C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/NeuralUnit_tb.v
+remove_files C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAM_Mux_TB_PY.v
+remove_files C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAM_Read_Driver_TB.v
+remove_files C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ROM_Controller_tb.v
+remove_files C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Shifter_TB.v
+remove_files {C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Weight_Reg_Bank_TB.v C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ram_tb.v C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/tb_divisor_non_restoring.v}
+remove_files -fileset rom_blk C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/ip/rom_blk/rom_blk.xci
+delete_fileset rom_blk
+create_ip -name blk_mem_gen -vendor xilinx.com -library ip -module_name blk_mem_gen_0
+set_property -dict [list CONFIG.Memory_Type {Single_Port_ROM} CONFIG.Write_Width_A {32} CONFIG.Write_Depth_A {32} CONFIG.Load_Init_File {true} CONFIG.Coe_File {C:/Users/fendrirj/Git_Repos/neural_network/Verilog/Neural_ROM.coe}] [get_ips blk_mem_gen_0]
+generate_target {instantiation_template} [get_files c:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci]
+update_compile_order -fileset sources_1
+generate_target all [get_files  c:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci]
+create_ip_run [get_files -of_objects [get_fileset sources_1] c:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci]
+launch_run -jobs 8 blk_mem_gen_0_synth_1
+remove_files -fileset RAM C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/ip/RAM/RAM.xci
+delete_fileset RAM
+create_ip -name blk_mem_gen -vendor xilinx.com -library ip -module_name blk_mem_gen_1
+set_property -dict [list CONFIG.Write_Width_A {32} CONFIG.Write_Depth_A {1024} CONFIG.Load_Init_File {true} CONFIG.Coe_File {C:/Users/fendrirj/Git_Repos/neural_network/Verilog/weights.coe}] [get_ips blk_mem_gen_1]
+generate_target {instantiation_template} [get_files c:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1.xci]
+update_compile_order -fileset sources_1
+generate_target all [get_files  c:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1.xci]
+create_ip_run [get_files -of_objects [get_fileset sources_1] c:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1.xci]
+launch_run -jobs 8 blk_mem_gen_1_synth_1
+launch_xsim -simset sim_1 -mode behavioral
+close_sim
+set_property -dict [list CONFIG.Coe_File {C:/Users/fendrirj/Git_Repos/neural_network/Verilog/weights.coe}] [get_ips blk_mem_gen_1]
+reset_run blk_mem_gen_1_synth_1
+launch_run -jobs 8 blk_mem_gen_1_synth_1
+reset_run synth_1
+launch_runs synth_1
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1
+wait_on_run synth_1
+close_project
+create_project DataRegTest C:/Users/fendrirj/DataRegTest -part xc7z010clg400-1
+add_files -norecurse -force C:/Users/fendrirj/Git_Repos/neural_network/Verilog/Data_Reg_Bank.v
+import_files -force -norecurse
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+launch_runs synth_1
+wait_on_run synth_1
+close [ open C:/Users/fendrirj/DataRegTest/DataRegTest.srcs/sources_1/new/Test.v w ]
+add_files C:/Users/fendrirj/DataRegTest/DataRegTest.srcs/sources_1/new/Test.v
+update_compile_order -fileset sources_1
+import_files -norecurse {C:/Users/fendrirj/Git_Repos/neural_network/Verilog/DebouncerWithoutLatch.v C:/Users/fendrirj/Git_Repos/neural_network/Verilog/multi_logic.v C:/Users/fendrirj/Git_Repos/neural_network/Verilog/Denominator.v C:/Users/fendrirj/Git_Repos/neural_network/Verilog/Weight_Reg_Bank.v C:/Users/fendrirj/Git_Repos/neural_network/Verilog/Divisor_non_restoring.v C:/Users/fendrirj/Git_Repos/neural_network/Verilog/Elliot_Activation.v C:/Users/fendrirj/Git_Repos/neural_network/Verilog/ClockedOneShot.v C:/Users/fendrirj/Git_Repos/neural_network/Verilog/RAM_Read_Driver.v C:/Users/fendrirj/Git_Repos/neural_network/Verilog/ram_access.v C:/Users/fendrirj/Git_Repos/neural_network/Verilog/MassAnd_py.v C:/Users/fendrirj/Git_Repos/neural_network/Verilog/Shifter.v C:/Users/fendrirj/Git_Repos/neural_network/Verilog/DelayLoop.v C:/Users/fendrirj/Git_Repos/neural_network/Verilog/Multi_Sum_PY.v C:/Users/fendrirj/Git_Repos/neural_network/Verilog/Neural_Unit.v C:/Users/fendrirj/Git_Repos/neural_network/Verilog/ROM_Controller.v C:/Users/fendrirj/Git_Repos/neural_network/Verilog/LayerMux.v C:/Users/fendrirj/Git_Repos/neural_network/Verilog/Network_Controller.v}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top Test [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1
+wait_on_run synth_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1
+wait_on_run synth_1
+open_run synth_1 -name netlist_1
+remove_files C:/Users/fendrirj/DataRegTest/DataRegTest.srcs/sources_1/new/Test.v
+update_compile_order -fileset sources_1
+set_property top NeuralUnit [current_fileset]
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1
+wait_on_run synth_1
+close_design

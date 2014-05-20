@@ -7,18 +7,17 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module RAMMux_py(
-input [31:0] ram_out,
-input [2:0] unit_sel,
+module RAMMux(
+input [7:0] ram_out,
+input [1:0] unit_sel,
 input write,
-input CLOCK,
-output reg [31:0] weight0,output reg write0,
-output reg [31:0] weight1,output reg write1,
-output reg [31:0] weight2,output reg write2,
-output reg [31:0] weight3,output reg write3
+output reg [7:0] weight0,output reg write0,
+output reg [7:0] weight1,output reg write1,
+output reg [7:0] weight2,output reg write2,
+output reg [7:0] weight3,output reg write3
 );
 
-always@(posedge CLOCK)	begin
+always@(ram_out or unit_sel or write)	begin
  	case(unit_sel)
 	0: begin
 		weight0<=ram_out;

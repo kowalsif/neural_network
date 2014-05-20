@@ -25,6 +25,6 @@ def MassAnd(numUnits):
         if (i != numUnits-1):
             f.write(',')
     f.write(');\n\n')
-	f.write('ClockedOneShot shot(andDone, done, reset, CLOCK) ;\n\n')
+    f.write('ClockedOneShot shot(andDone, done, reset, CLOCK) ;\n\n')
     f.write('endmodule\n')
     

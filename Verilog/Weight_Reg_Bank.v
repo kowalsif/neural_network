@@ -1,20 +1,25 @@
-`timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // 
 // Module Name: WeightRegBank
-// Project Name: Brain Network
+// Project Name: Neural Network
 // Description: For 4 units
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module WeightRegBank(dataIn, address, write, clk, out0, out1, out2, out3);
+module WeightRegBank(dataIn, address, write, reset, clk, out0, out1, out2, out3);
 input [7:0] dataIn;
 input [1:0] address;
-input write, clk;
+input write, reset, clk;
 output reg [7:0] out0, out1, out2, out3;
 
 always @ (posedge clk) begin
-	if(write == 1) begin
+    if (reset == 1) begin
+        out0 <= 0;
+    	out1 <= 0;
+    	out2 <= 0;
+    	out3 <= 0;   
+        end
+	else if(write == 1) begin
 		case(address)
 			0: begin
 				out0 <= dataIn;
@@ -50,3 +55,4 @@ always @ (posedge clk) begin
 	end
 end
 endmodule
+

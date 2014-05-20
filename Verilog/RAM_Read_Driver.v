@@ -26,7 +26,7 @@ output reg [9:0] RAM_address;
 output reg [1:0] unit_sel,unit_address; //TODO: Python
 output reg write, sum_trigger;
 
-reg [2:0] state, nextstate;
+reg [3:0] state, nextstate;
 reg [2:0] count, unitcount; //TODO: Python
 
 always @ (posedge clk) begin
@@ -35,27 +35,96 @@ always @ (posedge clk) begin
 		state <= 0;
 end
 
-always @ (posedge clk) begin //state or start
+always @ (state or start or count or unitcount) begin //state or start
 	case(state)
+		0: begin
+			if(start==1)
+				nextstate <= 1;
+			else
+				nextstate <= 0;
+			end
+		1: begin //stall one cycle for ram latency
+		    nextstate <= 2;
+		    end
+		2: begin //stall two cycles for ram latency
+		    nextstate <= 3;
+		    end
+		3: begin 
+			nextstate <= 4;
+			end
+		4: begin
+			nextstate <= 5;
+			end
+		5: begin //stall one cycle for ram latency
+			if(count ==4) nextstate <= 7; //TODO: Python
+			else nextstate <= 6;
+			end
+		6: begin //stall second cycle for ram latency
+			nextstate <= 3;
+			end
+		7: begin //update unit while stalling for ram latency
+			nextstate <= 8;
+			end
+		8: begin //check unit count
+			if(unitcount == 4) nextstate <= 9; //TODO: Python
+			else nextstate <= 3;
+			end
+		9: begin
+			nextstate <= 10;
+			end
+		10: begin
+			nextstate <= 0;
+			end
+		default: begin
+			nextstate <= 0;
+			end
+	endcase
+end
+
+always @ (posedge clk) begin
+	if(reset == 1) begin
+		RAM_address <= 0;
+		unit_sel <= 0;
+		unit_address <= 0;
+		write <= 0;
+		sum_trigger <= 0;
+		count <= 0;
+		unitcount <= 0;
+		end
+	else case(state)
 		0: begin
 			if(layer == 0)
 				RAM_address <= 0;
 			else if(layer == 1)
-				RAM_address <= 4;
+				RAM_address <= 16;
 			else if(layer == 2)
-				RAM_address <= 8;
+				RAM_address <= 32;
 			unit_sel <= 0;
 			unit_address <= 0;
 			write <= 0;
 			sum_trigger <= 0;
 			count <= 0;
 			unitcount <= 0;
-			if(start==1)
-				nextstate <= 1;
-			else
-				nextstate <= 0;
 			end
-		1: begin 
+		1: begin //stall one cycle for ram latency
+            RAM_address <= RAM_address;
+            unit_sel <= unit_sel;
+            unit_address <= unit_address;
+            write <= 0;
+            sum_trigger <= 0;
+            count <= count;
+            unitcount <= unitcount;
+            end
+		2: begin //stall two cycles for ram latency
+		  	RAM_address <= RAM_address;
+            unit_sel <= unit_sel;
+            unit_address <= unit_address;
+            write <= 0;
+            sum_trigger <= 0;
+            count <= count;
+            unitcount <= unitcount;
+            end
+		3: begin 
 			RAM_address <= RAM_address;
 			unit_sel <= unit_sel;
 			unit_address <= unit_address;
@@ -63,9 +132,8 @@ always @ (posedge clk) begin //state or start
 			sum_trigger <= 0;
 			count <= count + 1;
 			unitcount <= unitcount;
-			nextstate <= 2;
 			end
-		2: begin
+		4: begin
 			RAM_address <= RAM_address + 1;
 			unit_sel <= unit_sel;
 			unit_address <= unit_address + 1;
@@ -73,10 +141,8 @@ always @ (posedge clk) begin //state or start
 			sum_trigger <= 0;
 			count <= count;
 			unitcount <= unitcount;
-			if(count == 4) nextstate <= 4; //TODO: Python
-			else nextstate <= 3;
 			end
-		3: begin //stall one cycle for ram latency
+		5: begin
 			RAM_address <= RAM_address;
 			unit_sel <= unit_sel;
 			unit_address <= unit_address;
@@ -84,9 +150,17 @@ always @ (posedge clk) begin //state or start
 			sum_trigger <= 0;
 			count <= count;
 			unitcount <= unitcount;
-			nextstate <= 1;
 			end
-		4: begin //update unit while stalling for ram latency
+		6: begin //stall one cycle for ram latency
+			RAM_address <= RAM_address;
+			unit_sel <= unit_sel;
+			unit_address <= unit_address;
+			write <= 0;
+			sum_trigger <= 0;
+			count <= count;
+			unitcount <= unitcount;
+			end
+		7: begin //update unit while stalling for ram latency
 			RAM_address <= RAM_address;
 			unit_sel <= unit_sel + 1;
 			unit_address <= 0;
@@ -94,9 +168,8 @@ always @ (posedge clk) begin //state or start
 			sum_trigger <= 0;
 			count <= 0;
 			unitcount <= unitcount + 1;
-			nextstate <= 5;
 			end
-		5: begin //check unit count
+		8: begin //check unit count
 			RAM_address <= RAM_address;
 			unit_sel <= unit_sel;
 			unit_address <= unit_address;
@@ -104,10 +177,8 @@ always @ (posedge clk) begin //state or start
 			sum_trigger <= 0;
 			count <= count;
 			unitcount <= unitcount;
-			if(unitcount == 4) nextstate <= 6; //TODO: Python
-			else nextstate <= 1;
 			end
-		6: begin
+		9: begin
 			RAM_address <= RAM_address;
 			unit_sel <= unit_sel;
 			unit_address <= unit_address;
@@ -115,9 +186,8 @@ always @ (posedge clk) begin //state or start
 			sum_trigger <= 1;
 			count <= count;
 			unitcount <= unitcount;
-			nextstate <= 7;
 			end
-		7: begin
+		10: begin
 			RAM_address <= RAM_address;
 			unit_sel <= unit_sel;
 			unit_address <= unit_address;
@@ -125,18 +195,17 @@ always @ (posedge clk) begin //state or start
 			sum_trigger <= 1;
 			count <= count;
 			unitcount <= unitcount;
-			nextstate <= 0;
 			end
 		default: begin
-		    RAM_address <= 0;
-            unit_sel <= 0;
-            unit_address <= 0;
-            write <= 0;
-            sum_trigger <= 0;
-            count <= 0;
-            unitcount <= 0;
-            nextstate <= 0;
-		end
-		endcase
-	end
+			RAM_address <= 0;
+			unit_sel <= 0;
+			unit_address <= 0;
+			write <= 0;
+			sum_trigger <= 0;
+			count <= 0;
+			unitcount <= 0;
+			end
+	endcase
+end
+
 endmodule

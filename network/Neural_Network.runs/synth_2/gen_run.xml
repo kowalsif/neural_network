@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="synth_2" LaunchPart="xc7z010clg400-1" LaunchTime="1400453376">
+  <File Type="RDS-UTIL-PB" Name="Network_utilization_synth.pb"/>
+  <File Type="RUN-CONSTRS" Name="$PDATADIR/runs/synth_2/constrs_in.xml"/>
+  <File Type="RDS-UTIL" Name="Network_utilization_synth.rpt"/>
+  <File Type="RUN-SRCS" Name="$PDATADIR/runs/synth_2/sources.xml"/>
+  <File Type="RUN-STRAT" Name="$PDATADIR/runs/synth_2/synth_2.psg"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="Network_timing_summary_synth.rpt"/>
+  <File Type="PA-TCL" Name="Network.tcl"/>
+  <File Type="RDS-RDS" Name="Network.vds"/>
+  <File Type="RDS-DCP" Name="Network.dcp"/>
+  <File Type="VDS-TIMING-PB" Name="Network_timing_summary_synth.pb"/>
+  <File Type="VDS-HWDEF" Name="$PSDKDIR/SDK/SDK_Export/hw/Network.hwdef"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/Divisor_non_restoring.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/Divisor_non_restoring.v"/>
+        <Attr Name="ImportTime" Val="1399246164"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/Denominator.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/Denominator.v"/>
+        <Attr Name="ImportTime" Val="1398893953"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/DelayLoop.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/DelayLoop.v"/>
+        <Attr Name="ImportTime" Val="1400438574"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/Weight_Reg_Bank.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/Weight_Reg_Bank.v"/>
+        <Attr Name="ImportTime" Val="1400355991"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/Shifter.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/Shifter.v"/>
+        <Attr Name="ImportTime" Val="1397249935"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/Multi_Sum_PY.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/Multi_Sum_PY.v"/>
+        <Attr Name="ImportTime" Val="1400355991"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/LayerMux.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/LayerMux.v"/>
+        <Attr Name="ImportTime" Val="1399246343"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/Elliot_Activation.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/Elliot_Activation.v"/>
+        <Attr Name="ImportTime" Val="1399647471"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/DebouncerWithoutLatch.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/DebouncerWithoutLatch.v"/>
+        <Attr Name="ImportTime" Val="1400438574"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/ClockedOneShot.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/ClockedOneShot.v"/>
+        <Attr Name="ImportTime" Val="1400438574"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/ROM_Controller.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/ROM_Controller.v"/>
+        <Attr Name="ImportTime" Val="1400438574"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/RAM_Read_Driver.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/RAM_Read_Driver.v"/>
+        <Attr Name="ImportTime" Val="1400355507"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/ram_access.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/ram_access.v"/>
+        <Attr Name="ImportTime" Val="1400107381"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/RAMMux_py.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/RAMMux_py.v"/>
+        <Attr Name="ImportTime" Val="1400355991"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/Neural_Unit.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/Neural_Unit.v"/>
+        <Attr Name="ImportTime" Val="1400355991"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/Network_Controller.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/Network_Controller.v"/>
+        <Attr Name="ImportTime" Val="1400354549"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/MassAnd_py.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/MassAnd_py.v"/>
+        <Attr Name="ImportTime" Val="1400355991"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/Data_Reg_Bank.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/Data_Reg_Bank.v"/>
+        <Attr Name="ImportTime" Val="1400355991"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Network.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/multi_logic.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/Verilog/multi_logic.v"/>
+        <Attr Name="ImportTime" Val="1397332665"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/Verilog/rom.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/Verilog/weights.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Git_Repos/neural_network/Verilog/Neural_ROM.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Git_Repos/neural_network/Verilog/weights.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="Network"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2014">
+      <Desc>Vivado Synthesis Defaults</Desc>
+    </StratHandle>
+    <Step Id="synth_design">
+      <Option Id="FsmExtraction">0</Option>
+    </Step>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="clk_wiz_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_1"/>
+</GenRun>

@@ -24,17 +24,16 @@ module ROM_Controller(
     input start,
     input clk,
     input reset,
-    output reg [0:31] rom_output,
+    output [0:31] rom_output,
 	output reg [1:0] address,
 	output reg writeData,
     output reg start_network_controller
     );
 //    parameter rom_addr = 32'h00000003;
 	reg [4:0] rom_addr;
-    reg [1:0] state=0;
-    reg [1:0] nextstate=0;
+    reg [2:0] state=0;
+    reg [2:0] nextstate=0;
     reg [3:0] currentUnit;
-    wire [31:0] rom_data;
     wire debouncedStart;
     wire oneShotStart;
     
@@ -46,68 +45,92 @@ module ROM_Controller(
         else state<=nextstate;
     end
     
-    
-    always @ (posedge clk) begin //oneShotStart or state
+    always@(state or oneShotStart or currentUnit) begin
         case(state)
             0: begin
-					rom_addr<=0;
+                    if(oneShotStart == 1)
+                        nextstate <= 1;
+                    else
+                        nextstate<=0;   
+               end
+            1: begin 
+                    nextstate<=2;
+               end
+            2: begin
+					nextstate<=3;
+			   end
+			3: begin
+			         nextstate<=4;
+			end
+			4: begin
+			     if(currentUnit != 3)
+			         nextstate<=1;
+			     else
+			         nextstate<=5;
+			end
+			5: begin 
+			     nextstate <=0;
+               end
+            default: 
+                nextstate<=0;
+        endcase
+    end
+    
+    always @ (posedge clk) begin 
+        case(state)
+            0: begin
+					rom_addr<=7;
 					address<=0;
 					writeData<=0;
 					start_network_controller <=0;
 					currentUnit <=0;
-					rom_output <= rom_data;
-					
-                    if(oneShotStart == 1)
-                        nextstate <= 1;
-                    else
-                        nextstate<=0;
                 end
             1: begin
-                    //send write signal to data reg
+                    //Get rom data
                     rom_addr<=rom_addr;
 					address<=address;
-					writeData<=1;
+					writeData<=0;
 					start_network_controller <=0;
-					currentUnit <=currentUnit;
-					rom_output <= rom_output;
-					
-                    nextstate<=2;
+					currentUnit <=currentUnit;      
                 end
-			2: begin
+            2: begin
+                //wait for RAM
+                rom_addr<=rom_addr;
+                address<=address;
+                writeData<=0;
+                start_network_controller <=0;
+                currentUnit <=currentUnit;
+            end
+            3: begin
+                //Send write signal
+                    rom_addr<=rom_addr;
+                	address<=address;
+                	writeData<=1;
+                	start_network_controller <=0;
+                	currentUnit <=currentUnit;                  
+            end
+			4: begin
 					//Allow time for the ram to propagate
 					rom_addr<= rom_addr +1;
 					address<=address+1;
 					writeData<=0;
 					start_network_controller <=0;
 					currentUnit <=currentUnit +1;
-					rom_output <= rom_output;
-					
-					nextstate<=3;
 				end
-            3: begin
+            5: begin
                 //wait for start to go back to 0
-                    if(currentUnit !=4) begin
-                        nextstate<=1;
-						start_network_controller <=0;
-						rom_output <= 0;
-					end
-                    else begin
-                        nextstate<=0;
-						start_network_controller <=1;
-						rom_output <= rom_output;
-					end
-					rom_addr<= rom_addr;
-					address<=address;
-					writeData<=0;
+                    rom_addr<= rom_addr;
+                	address<=address;
+                	writeData<=0;
+                	start_network_controller <=1;
+                	currentUnit <=currentUnit;
                 end
              default: begin
-                    nextstate<=2'b00;
                     start_network_controller <=0;
 					rom_addr<=rom_addr;
 					address<=address;
-					writeData<=1;
+					writeData<=0;
 					currentUnit <=0;
-					rom_output <= 0;
              end
          endcase
     end
@@ -116,7 +139,8 @@ module ROM_Controller(
       .clka(clk),    // input wire clka
       .ena(1'b1),      // input wire ena
       .addra(rom_addr),  // input wire [31 : 0] addra
-      .douta(rom_data)  // output wire [31 : 0] douta
+      .douta(rom_output)  // output wire [31 : 0] douta
     );
     // INST_TAG_END ------ End INSTANTIATION Template ---------
 endmodule
+

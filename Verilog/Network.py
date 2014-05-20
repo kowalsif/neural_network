@@ -21,10 +21,12 @@ def NetworkUnit(numUnits):
         f.write('wire clk, layer_sel, RAM_controll_start,write0,write1,write2,write3,layerDone0,layerDone1,layerDone2,layerDone3, sumTrigger,start_network_controller,lock,writeData;\n')
         #log2(numUnits bits)
         f.write('wire ['+str(int(math.log(numUnits)/math.log(2)-1))+':0] layer,unit_addr,rom_address,unit_sel,unit_address;\n\n')
+        #8 bits
+        f.write('wire [7:0] weight0,weight1,weight2,weight3;\n')
         #10 bits
         f.write('wire [9:0] ram_addr,RAM_address;\n')
         #32 bits
-        f.write('wire [31:0] weight0,weight1,weight2,weight3,ram_out,input0n0,input1n0,input2n0,input3n0,layerOutn0,out0,out1,out2,out3,layerOutn1,layerOutn2,layerOutn3,rom_output;\n')
+        f.write('wire [31:0] ram_out,input0n0,input1n0,input2n0,input3n0,layerOutn0,out0,out1,out2,out3,layerOutn1,layerOutn2,layerOutn3,rom_output;\n')
         
         #clock
         f.write('clk_wiz_0 clock\n\t(\n\t.clk_in1(sysclk),\n\t.clk_out1(clk),\n\t.reset(reset),\n\t.locked(lock));\n\n')
@@ -76,4 +78,6 @@ def NetworkUnit(numUnits):
         f.write(');\n\n')
 
         f.write('endmodule')
+
+
 

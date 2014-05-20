@@ -1,34 +1,11 @@
-<<<<<<< HEAD
 //////////////////////////////////////////////////////////////////////////////////
 // 
 // Module Name: Network
-// Project Name: Brain Network
 // Description: For 4 units
-=======
-`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 05/17/2014 03:53:10 PM
-// Design Name: 
-// Module Name: Network
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
->>>>>>> 6fa2010ef70e9af85dc0777edce4f3ecb7097708
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
 module Network(
-<<<<<<< HEAD
 	input start,
 	input reset,
 	input sysclk,
@@ -133,10 +110,3 @@ ROM_Controller rom(start,clk,reset,rom_output,rom_address,writeData,start_networ
 
 and A0(rez,out0,out1,out2,out3);
 
-<<<<<<< HEAD
-endmodule
-=======
-endmodule
-
-
->>>>>>> 6fa2010ef70e9af85dc0777edce4f3ecb7097708
