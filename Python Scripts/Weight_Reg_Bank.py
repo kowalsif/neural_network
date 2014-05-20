@@ -1,9 +1,9 @@
-import unit_generation
+#import unit_generation
 import math
 
 def WeightRegBank(numUnits):
 	f = open('Weight_Reg_Bank.v', 'w')
-	f.write(unit_generation.header('WeightRegBank', 'For '+str(numUnits)+' units'))
+	#f.write(unit_generation.header('WeightRegBank', 'For '+str(numUnits)+' units'))
 	
 	#module declaration
 	f.write('module WeightRegBank(dataIn, address, write, clk')
@@ -48,7 +48,7 @@ def WeightRegBank(numUnits):
 def WeightRegBankTB(numUnits):
 	f = open('Weight_Reg_Bank_TB.v', 'w')
 	f.write('`timescale 1ns / 1ps\n')
-	f.write(unit_generation.header('WeightRegBank Test Fixture', ' '))
+	#f.write(unit_generation.header('WeightRegBank Test Fixture', ' '))
 	
 	f.write('module Weight_Reg_Bank_TB();\n')
 	f.write('reg [7:0] dataIn;\n')

@@ -1,0 +1,708 @@
+#-----------------------------------------------------------
+# Vivado v2014.1 (64-bit)
+# SW Build 881834 on Fri Apr  4 14:15:54 MDT 2014
+# IP Build 877625 on Fri Mar 28 16:29:15 MDT 2014
+# Start of session at: Sun May 18 18:49:39 2014
+# Process ID: 5176
+# Log file: C:/Users/fendrirj/Vivado/network/Neural_Network.runs/synth_2/Network.vds
+# Journal file: C:/Users/fendrirj/Vivado/network/Neural_Network.runs/synth_2\vivado.jou
+#-----------------------------------------------------------
+source Network.tcl
+# set_param gui.test TreeTableDev
+# set_msg_config -id {HDL 9-1061} -limit 100000
+# set_msg_config -id {HDL 9-1654} -limit 100000
+# create_project -in_memory -part xc7z010clg400-1
+# set_property target_language Verilog [current_project]
+# set_param project.compositeFile.enableAutoGeneration 0
+# set_property default_lib xil_defaultlib [current_project]
+# add_files C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/rom.coe
+# add_files C:/Users/fendrirj/Vivado/network/Verilog/weights.coe
+# add_files C:/Users/fendrirj/Git_Repos/neural_network/Verilog/Neural_ROM.coe
+# add_files C:/Users/fendrirj/Git_Repos/neural_network/Verilog/weights.coe
+# add_files -quiet C:/Users/fendrirj/Vivado/network/Neural_Network.runs/clk_wiz_0_synth_1/clk_wiz_0.dcp
+# set_property used_in_implementation false [get_files C:/Users/fendrirj/Vivado/network/Neural_Network.runs/clk_wiz_0_synth_1/clk_wiz_0.dcp]
+# add_files -quiet C:/Users/fendrirj/Vivado/network/Neural_Network.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0.dcp
+# set_property used_in_implementation false [get_files C:/Users/fendrirj/Vivado/network/Neural_Network.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0.dcp]
+# add_files -quiet C:/Users/fendrirj/Vivado/network/Neural_Network.runs/blk_mem_gen_1_synth_1/blk_mem_gen_1.dcp
+# set_property used_in_implementation false [get_files C:/Users/fendrirj/Vivado/network/Neural_Network.runs/blk_mem_gen_1_synth_1/blk_mem_gen_1.dcp]
+# read_verilog -library xil_defaultlib {
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Divisor_non_restoring.v
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Denominator.v
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/DelayLoop.v
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Weight_Reg_Bank.v
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Shifter.v
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Multi_Sum_PY.v
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/LayerMux.v
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Elliot_Activation.v
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/DebouncerWithoutLatch.v
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ClockedOneShot.v
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ROM_Controller.v
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAM_Read_Driver.v
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ram_access.v
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAMMux_py.v
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Neural_Unit.v
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Network_Controller.v
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/MassAnd_py.v
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Data_Reg_Bank.v
+#   C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/new/Network.v
+# }
+# read_xdc dont_buffer.xdc
+# set_property used_in_implementation false [get_files dont_buffer.xdc]
+# set_param synth.vivado.isSynthRun true
+# set_property webtalk.parent_dir C:/Users/fendrirj/Vivado/network/Neural_Network.cache/wt [current_project]
+# set_property parent.project_dir C:/Users/fendrirj/Vivado/network [current_project]
+# synth_design -top Network -part xc7z010clg400-1 -fsm_extraction off
+Command: synth_design -top Network -part xc7z010clg400-1 -fsm_extraction off
+
+Starting synthesis...
+
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 232.145 ; gain = 100.738
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'Network' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/new/Network.v:22]
+INFO: [Synth 8-638] synthesizing module 'Network_Controller' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Network_Controller.v:21]
+INFO: [Synth 8-226] default block is never used [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Network_Controller.v:43]
+INFO: [Synth 8-256] done synthesizing module 'Network_Controller' (1#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Network_Controller.v:21]
+INFO: [Synth 8-638] synthesizing module 'DataRegBank' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Data_Reg_Bank.v:10]
+INFO: [Synth 8-226] default block is never used [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Data_Reg_Bank.v:18]
+INFO: [Synth 8-256] done synthesizing module 'DataRegBank' (2#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Data_Reg_Bank.v:10]
+INFO: [Synth 8-638] synthesizing module 'NeuralUnit' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Neural_Unit.v:10]
+INFO: [Synth 8-638] synthesizing module 'WeightRegBank' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Weight_Reg_Bank.v:10]
+INFO: [Synth 8-226] default block is never used [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Weight_Reg_Bank.v:18]
+INFO: [Synth 8-256] done synthesizing module 'WeightRegBank' (3#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Weight_Reg_Bank.v:10]
+INFO: [Synth 8-638] synthesizing module 'Elliot_Activation' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Elliot_Activation.v:23]
+	Parameter s bound to: 8'b00000001 
+INFO: [Synth 8-638] synthesizing module 'Denominator' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Denominator.v:23]
+INFO: [Synth 8-256] done synthesizing module 'Denominator' (4#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Denominator.v:23]
+INFO: [Synth 8-638] synthesizing module 'Divisor_non_restoring' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Divisor_non_restoring.v:23]
+INFO: [Synth 8-256] done synthesizing module 'Divisor_non_restoring' (5#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Divisor_non_restoring.v:23]
+INFO: [Synth 8-256] done synthesizing module 'Elliot_Activation' (6#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Elliot_Activation.v:23]
+INFO: [Synth 8-638] synthesizing module 'MultiSum' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Multi_Sum_PY.v:10]
+INFO: [Synth 8-256] done synthesizing module 'MultiSum' (7#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Multi_Sum_PY.v:10]
+INFO: [Synth 8-638] synthesizing module 'LayerMux' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/LayerMux.v:23]
+INFO: [Synth 8-226] default block is never used [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/LayerMux.v:34]
+INFO: [Synth 8-256] done synthesizing module 'LayerMux' (8#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/LayerMux.v:23]
+INFO: [Synth 8-638] synthesizing module 'Shifter' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Shifter.v:19]
+INFO: [Synth 8-256] done synthesizing module 'Shifter' (9#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Shifter.v:19]
+INFO: [Synth 8-256] done synthesizing module 'NeuralUnit' (10#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Neural_Unit.v:10]
+INFO: [Synth 8-638] synthesizing module 'MassAnd_py' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/MassAnd_py.v:10]
+INFO: [Synth 8-256] done synthesizing module 'MassAnd_py' (11#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/MassAnd_py.v:10]
+INFO: [Synth 8-638] synthesizing module 'RAMMux_py' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAMMux_py.v:10]
+INFO: [Synth 8-226] default block is never used [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAMMux_py.v:22]
+INFO: [Synth 8-256] done synthesizing module 'RAMMux_py' (12#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAMMux_py.v:10]
+INFO: [Synth 8-638] synthesizing module 'RAM_Read_Driver' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAM_Read_Driver.v:21]
+INFO: [Synth 8-226] default block is never used [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAM_Read_Driver.v:39]
+WARNING: [Synth 8-567] referenced signal 'RAM_address' should be on the sensitivity list [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAM_Read_Driver.v:38]
+WARNING: [Synth 8-567] referenced signal 'unit_sel' should be on the sensitivity list [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAM_Read_Driver.v:38]
+WARNING: [Synth 8-567] referenced signal 'unit_address' should be on the sensitivity list [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAM_Read_Driver.v:38]
+WARNING: [Synth 8-567] referenced signal 'count' should be on the sensitivity list [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAM_Read_Driver.v:38]
+WARNING: [Synth 8-567] referenced signal 'unitcount' should be on the sensitivity list [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAM_Read_Driver.v:38]
+INFO: [Synth 8-256] done synthesizing module 'RAM_Read_Driver' (13#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAM_Read_Driver.v:21]
+INFO: [Synth 8-638] synthesizing module 'ram_access' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ram_access.v:23]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_1' [C:/Users/fendrirj/Vivado/network/Neural_Network.runs/synth_2/.Xil/Vivado-5176-FENDRIRJ-1/realtime/blk_mem_gen_1_stub.v:7]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_1' (14#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.runs/synth_2/.Xil/Vivado-5176-FENDRIRJ-1/realtime/blk_mem_gen_1_stub.v:7]
+INFO: [Synth 8-256] done synthesizing module 'ram_access' (15#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ram_access.v:23]
+INFO: [Synth 8-638] synthesizing module 'ROM_Controller' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ROM_Controller.v:23]
+INFO: [Synth 8-638] synthesizing module 'DebouncerWithoutLatch' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/DebouncerWithoutLatch.v:9]
+	Parameter State0 bound to: 0 - type: integer 
+	Parameter State1 bound to: 1 - type: integer 
+	Parameter State2 bound to: 2 - type: integer 
+	Parameter State3 bound to: 3 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'DelayLoop' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/DelayLoop.v:7]
+	Parameter Divider bound to: 3 - type: integer 
+	Parameter NumberOfBits bound to: 27 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'DelayLoop' (16#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/DelayLoop.v:7]
+INFO: [Synth 8-256] done synthesizing module 'DebouncerWithoutLatch' (17#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/DebouncerWithoutLatch.v:9]
+INFO: [Synth 8-638] synthesizing module 'ClockedOneShot' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ClockedOneShot.v:6]
+	Parameter State0 bound to: 0 - type: integer 
+	Parameter State1 bound to: 1 - type: integer 
+	Parameter State2 bound to: 2 - type: integer 
+	Parameter State3 bound to: 3 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'ClockedOneShot' (18#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ClockedOneShot.v:6]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_0' [C:/Users/fendrirj/Vivado/network/Neural_Network.runs/synth_2/.Xil/Vivado-5176-FENDRIRJ-1/realtime/blk_mem_gen_0_stub.v:7]
+INFO: [Synth 8-256] done synthesizing module 'blk_mem_gen_0' (19#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.runs/synth_2/.Xil/Vivado-5176-FENDRIRJ-1/realtime/blk_mem_gen_0_stub.v:7]
+INFO: [Synth 8-226] default block is never used [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ROM_Controller.v:51]
+WARNING: [Synth 8-567] referenced signal 'rom_data' should be on the sensitivity list [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ROM_Controller.v:50]
+WARNING: [Synth 8-567] referenced signal 'rom_addr' should be on the sensitivity list [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ROM_Controller.v:50]
+WARNING: [Synth 8-567] referenced signal 'address' should be on the sensitivity list [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ROM_Controller.v:50]
+WARNING: [Synth 8-567] referenced signal 'currentUnit' should be on the sensitivity list [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ROM_Controller.v:50]
+WARNING: [Synth 8-567] referenced signal 'rom_output' should be on the sensitivity list [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ROM_Controller.v:50]
+INFO: [Synth 8-256] done synthesizing module 'ROM_Controller' (20#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ROM_Controller.v:23]
+INFO: [Synth 8-256] done synthesizing module 'Network' (21#1) [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/new/Network.v:22]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 264.910 ; gain = 133.504
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start RTL Optimization
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+Loading clock regions from C:/Xilinx/Vivado/2014.1/data\parts/xilinx/zynq/zynq/xc7z010/ClockRegion.xml
+Loading clock buffers from C:/Xilinx/Vivado/2014.1/data\parts/xilinx/zynq/zynq/xc7z010/ClockBuffers.xml
+Loading clock placement rules from C:/Xilinx/Vivado/2014.1/data/parts/xilinx/zynq/ClockPlacerRules.xml
+Loading package pin functions from C:/Xilinx/Vivado/2014.1/data\parts/xilinx/zynq/PinFunctions.xml...
+Loading package from C:/Xilinx/Vivado/2014.1/data\parts/xilinx/zynq/zynq/xc7z010/clg400/Package.xml
+Loading io standards from C:/Xilinx/Vivado/2014.1/data\./parts/xilinx/zynq/IOStandards.xml
+
+Processing XDC Constraints
+Parsing XDC File [C:/Users/fendrirj/Vivado/network/Neural_Network.runs/synth_2/dont_buffer.xdc]
+WARNING: [Vivado 12-180] No cells matched 'get_cells -hier -filter {REF_NAME==clk_wiz_0 || ORIG_REF_NAME==clk_wiz_0}'. [C:/Users/fendrirj/Vivado/network/Neural_Network.runs/synth_2/dont_buffer.xdc:4]
+Finished Parsing XDC File [C:/Users/fendrirj/Vivado/network/Neural_Network.runs/synth_2/dont_buffer.xdc]
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+
+---------------------------------------------------------------------------------
+Start RTL Optimization
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z010clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 476.035 ; gain = 344.629
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property BUFFER_TYPE = NONE for sysclk. (constraint file  C:/Users/fendrirj/Vivado/network/Neural_Network.runs/synth_2/dont_buffer.xdc, line 6).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 476.035 ; gain = 344.629
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Finished RTL Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 476.035 ; gain = 344.629
+---------------------------------------------------------------------------------
+
+INFO: [Synth 8-3537] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the inputs of the operator [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Denominator.v:33]
+WARNING: [Synth 8-3936] Found unconnected internal register 'divisor_reg' and it is trimmed from '32' to '16' bits. [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Divisor_non_restoring.v:66]
+INFO: [Synth 8-3537] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the inputs of the operator [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Multi_Sum_PY.v:19]
+WARNING: [Synth 8-327] inferring latch for variable 'layer_reg' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Network_Controller.v:45]
+WARNING: [Synth 8-327] inferring latch for variable 'RAM_address_reg' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAM_Read_Driver.v:41]
+WARNING: [Synth 8-327] inferring latch for variable 'unit_sel_reg' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAM_Read_Driver.v:42]
+WARNING: [Synth 8-327] inferring latch for variable 'unit_address_reg' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAM_Read_Driver.v:43]
+WARNING: [Synth 8-327] inferring latch for variable 'unitcount_reg' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAM_Read_Driver.v:47]
+WARNING: [Synth 8-327] inferring latch for variable 'count_reg' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/RAM_Read_Driver.v:46]
+WARNING: [Synth 8-327] inferring latch for variable 'rom_output_reg' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ROM_Controller.v:58]
+WARNING: [Synth 8-327] inferring latch for variable 'address_reg' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ROM_Controller.v:54]
+WARNING: [Synth 8-327] inferring latch for variable 'currentUnit_reg' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ROM_Controller.v:57]
+WARNING: [Synth 8-327] inferring latch for variable 'rom_addr_reg' [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/ROM_Controller.v:53]
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 12    
+	   3 Input     16 Bit       Adders := 4     
+	   2 Input     10 Bit       Adders := 1     
+	   2 Input      7 Bit       Adders := 4     
+	   2 Input      5 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 2     
+	   2 Input      2 Bit       Adders := 4     
++---XORs : 
+	   2 Input      1 Bit         XORs := 4     
++---Registers : 
+	               32 Bit    Registers := 36    
+	                8 Bit    Registers := 16    
+	                3 Bit    Registers := 5     
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 10    
++---Muxes : 
+	   3 Input     32 Bit        Muxes := 4     
+	   4 Input     32 Bit        Muxes := 5     
+	   5 Input     32 Bit        Muxes := 8     
+	   2 Input     32 Bit        Muxes := 44    
+	   2 Input     16 Bit        Muxes := 4     
+	   8 Input     10 Bit        Muxes := 1     
+	   3 Input      7 Bit        Muxes := 4     
+	   4 Input      5 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 1     
+	   8 Input      3 Bit        Muxes := 3     
+	   2 Input      3 Bit        Muxes := 2     
+	   5 Input      3 Bit        Muxes := 4     
+	   4 Input      2 Bit        Muxes := 6     
+	   2 Input      2 Bit        Muxes := 6     
+	   8 Input      2 Bit        Muxes := 2     
+	   5 Input      1 Bit        Muxes := 12    
+	   2 Input      1 Bit        Muxes := 16    
+	   3 Input      1 Bit        Muxes := 12    
+	   4 Input      1 Bit        Muxes := 32    
+	   8 Input      1 Bit        Muxes := 6     
+
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module Network 
+Detailed RTL Component Info : 
+Module Network_Controller 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	                2 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      2 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 2     
+	   4 Input      1 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 1     
+Module DataRegBank 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 4     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 4     
+	   4 Input      1 Bit        Muxes := 4     
+Module WeightRegBank 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 4     
++---Muxes : 
+	   4 Input      1 Bit        Muxes := 4     
+Module Denominator 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+Module Divisor_non_restoring 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   3 Input     16 Bit       Adders := 1     
+	   2 Input      7 Bit       Adders := 1     
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     32 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input     16 Bit        Muxes := 1     
+	   3 Input      7 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 3     
+Module Elliot_Activation 
+Detailed RTL Component Info : 
+Module MultiSum 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   5 Input     32 Bit        Muxes := 2     
+	   5 Input      3 Bit        Muxes := 1     
+	   5 Input      1 Bit        Muxes := 3     
+Module LayerMux 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module Shifter 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+Module NeuralUnit 
+Detailed RTL Component Info : 
+Module MassAnd_py 
+Detailed RTL Component Info : 
+Module RAMMux_py 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 4     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 4     
+	   4 Input      1 Bit        Muxes := 4     
+Module RAM_Read_Driver 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 2     
+	   2 Input      2 Bit       Adders := 2     
++---Registers : 
+	                3 Bit    Registers := 1     
++---Muxes : 
+	   8 Input     10 Bit        Muxes := 1     
+	   8 Input      3 Bit        Muxes := 3     
+	   2 Input      3 Bit        Muxes := 2     
+	   8 Input      2 Bit        Muxes := 2     
+	   8 Input      1 Bit        Muxes := 6     
+Module ram_access 
+Detailed RTL Component Info : 
+Module DelayLoop 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 2     
+Module DebouncerWithoutLatch 
+Detailed RTL Component Info : 
++---Registers : 
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 2     
+Module ClockedOneShot 
+Detailed RTL Component Info : 
++---Registers : 
+	                2 Bit    Registers := 1     
++---Muxes : 
+	   4 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module ROM_Controller 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      5 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	                2 Bit    Registers := 1     
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 1     
+	   4 Input      5 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 2     
+	   4 Input      1 Bit        Muxes := 4     
+
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 80 (col length:40)
+BRAMs: 120 (col length: RAMB18 40 RAMB36 20)
+
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start Cross Boundary Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[31] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[30] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[29] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[28] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[27] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[26] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[25] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[24] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[23] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[22] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[21] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[20] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[19] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[18] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[17] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[16] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[15] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[14] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[13] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[12] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[11] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[10] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[9] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[8] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[7] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[6] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[5] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[4] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[3] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[2] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[1] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out0_reg[0] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[31] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[30] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[29] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[28] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[27] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[26] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[25] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[24] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[23] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[22] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[21] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[20] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[19] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[18] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[17] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[16] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[15] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[14] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[13] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[12] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[11] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[10] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[9] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[8] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[7] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[6] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[5] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[4] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[3] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[2] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[1] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out1_reg[0] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[31] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[30] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[29] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[28] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[27] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[26] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[25] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[24] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[23] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[22] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[21] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[20] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[19] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[18] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[17] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[16] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[15] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[14] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[13] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[12] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[11] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[10] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[9] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[8] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[7] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[6] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[5] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[4] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[3] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[2] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[1] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out2_reg[0] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out3_reg[31] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out3_reg[30] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out3_reg[29] ) is unused and will be removed from module DataRegBank.
+WARNING: [Synth 8-3332] Sequential element (\out3_reg[28] ) is unused and will be removed from module DataRegBank.
+INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-3936] Found unconnected internal register 'denominator/denom_reg' and it is trimmed from '32' to '16' bits. [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Denominator.v:34]
+WARNING: [Synth 8-3936] Found unconnected internal register 'denominator/denom_reg' and it is trimmed from '32' to '16' bits. [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Denominator.v:34]
+WARNING: [Synth 8-3936] Found unconnected internal register 'denominator/denom_reg' and it is trimmed from '32' to '16' bits. [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Denominator.v:34]
+WARNING: [Synth 8-3936] Found unconnected internal register 'denominator/denom_reg' and it is trimmed from '32' to '16' bits. [C:/Users/fendrirj/Vivado/network/Neural_Network.srcs/sources_1/imports/Verilog/Denominator.v:34]
+---------------------------------------------------------------------------------
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:46 ; elapsed = 00:00:47 . Memory (MB): peak = 546.813 ; gain = 415.406
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Area Optimization : Time (s): cpu = 00:00:46 ; elapsed = 00:00:48 . Memory (MB): peak = 575.902 ; gain = 444.496
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:46 ; elapsed = 00:00:48 . Memory (MB): peak = 575.902 ; gain = 444.496
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:46 ; elapsed = 00:00:48 . Memory (MB): peak = 575.902 ; gain = 444.496
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:47 ; elapsed = 00:00:48 . Memory (MB): peak = 575.902 ; gain = 444.496
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 575.902 ; gain = 444.496
+---------------------------------------------------------------------------------
+
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 575.902 ; gain = 444.496
+---------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 575.902 ; gain = 444.496
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |blk_mem_gen_1 |         1|
+|2     |blk_mem_gen_0 |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+--------------+------+
+|      |Cell          |Count |
++------+--------------+------+
+|1     |blk_mem_gen_0 |     1|
+|2     |blk_mem_gen_1 |     1|
+|3     |CARRY4        |     7|
+|4     |INV           |     8|
+|5     |LUT1          |    28|
+|6     |LUT2          |    18|
+|7     |LUT3          |    38|
+|8     |LUT4          |    18|
+|9     |LUT5          |    26|
+|10    |LUT6          |    22|
+|11    |FDRE          |    92|
+|12    |LD            |    27|
+|13    |IBUF          |     2|
+|14    |OBUF          |     1|
++------+--------------+------+
+
+Report Instance Areas: 
++------+------------------+-------------------------+------+
+|      |Instance          |Module                   |Cells |
++------+------------------+-------------------------+------+
+|1     |top               |                         |   351|
+|2     |  cont            |Network_Controller       |    11|
+|3     |  n0              |NeuralUnit               |    29|
+|4     |    elliot        |Elliot_Activation_11     |    22|
+|5     |      denominator |Denominator_13           |     2|
+|6     |      divisor     |Divisor_non_restoring_14 |    20|
+|7     |    summer        |MultiSum_12              |     6|
+|8     |  n1              |NeuralUnit_0             |    29|
+|9     |    elliot        |Elliot_Activation_7      |    22|
+|10    |      denominator |Denominator_9            |     2|
+|11    |      divisor     |Divisor_non_restoring_10 |    20|
+|12    |    summer        |MultiSum_8               |     6|
+|13    |  n2              |NeuralUnit_1             |    31|
+|14    |    elliot        |Elliot_Activation_3      |    23|
+|15    |      denominator |Denominator_5            |     2|
+|16    |      divisor     |Divisor_non_restoring_6  |    21|
+|17    |    summer        |MultiSum_4               |     7|
+|18    |  n3              |NeuralUnit_2             |    29|
+|19    |    elliot        |Elliot_Activation        |    22|
+|20    |      denominator |Denominator              |     2|
+|21    |      divisor     |Divisor_non_restoring    |    20|
+|22    |    summer        |MultiSum                 |     6|
+|23    |  ram             |ram_access               |    32|
+|24    |  reader          |RAM_Read_Driver          |    51|
+|25    |  rom             |ROM_Controller           |   136|
+|26    |    debounce      |DebouncerWithoutLatch    |    75|
+|27    |      Timer       |DelayLoop                |    69|
+|28    |    oneShot       |ClockedOneShot           |     5|
++------+------------------+-------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 575.902 ; gain = 444.496
+---------------------------------------------------------------------------------
+
+Synthesis finished with 0 errors, 0 critical warnings and 1277 warnings.
+Synthesis Optimization Complete : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 575.902 ; gain = 444.496
+INFO: [Netlist 29-17] Analyzing 29 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Opt 31-140] Inserted 0 IBUFs to IO ports without IO buffers.
+INFO: [Opt 31-141] Inserted 0 OBUFs to IO ports without IO buffers.
+INFO: [Opt 31-138] Pushed 36 inverter(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 27 instances were transformed.
+  LD => LDCE: 27 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+60 Infos, 126 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:47 ; elapsed = 00:00:48 . Memory (MB): peak = 575.902 ; gain = 390.484
+# write_checkpoint Network.dcp
+# report_utilization -file Network_utilization_synth.rpt -pb Network_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.028 . Memory (MB): peak = 575.902 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Sun May 18 18:50:30 2014...

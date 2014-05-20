@@ -77,7 +77,6 @@ module controllers_and_ram_TB;
 		.ram_out(ram_out),
 		.unit_sel(unit_sel),
 		.write(write),
-		.CLOCK(clk),
 		.weight0(weight0),
 		.write0(write0),
 		.weight1(weight1),

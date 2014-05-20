@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Vivado v2013.4
+# SW Build 353583 on Mon Dec  9 17:38:55 MST 2013
+# IP Build 208076 on Mon Dec  2 12:38:17 MST 2013
+# Start of session at: Sun May 18 23:50:32 2014
+# Process ID: 6936
+# Log file: C:/Users/kowalsif/Desktop/neural/neural_network/project_1/project_1.runs/synth_1/Network.rds
+# Journal file: C:/Users/kowalsif/Desktop/neural/neural_network/project_1/project_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source Network.tcl

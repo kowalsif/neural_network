@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Vivado v2014.1 (64-bit)
+# SW Build 881834 on Fri Apr  4 14:15:54 MDT 2014
+# IP Build 877625 on Fri Mar 28 16:29:15 MDT 2014
+# Start of session at: Sun May 18 21:04:53 2014
+# Process ID: 1108
+# Log file: C:/Users/fendrirj/Vivado/network/Neural_Network.runs/synth_3/Network.vds
+# Journal file: C:/Users/fendrirj/Vivado/network/Neural_Network.runs/synth_3\vivado.jou
+#-----------------------------------------------------------
+source Network.tcl

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="Network_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="Network_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="44" />
+   <wvobject fp_name="/Network_tb/start" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">start</obj_property>
+      <obj_property name="ObjectShortName">start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/reset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/sysclk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sysclk</obj_property>
+      <obj_property name="ObjectShortName">sysclk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/done" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">done</obj_property>
+      <obj_property name="ObjectShortName">done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/layer_sel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">layer_sel</obj_property>
+      <obj_property name="ObjectShortName">layer_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/RAM_controll_start" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">RAM_controll_start</obj_property>
+      <obj_property name="ObjectShortName">RAM_controll_start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/write0" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">write0</obj_property>
+      <obj_property name="ObjectShortName">write0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/write1" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">write1</obj_property>
+      <obj_property name="ObjectShortName">write1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/write2" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">write2</obj_property>
+      <obj_property name="ObjectShortName">write2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/write3" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">write3</obj_property>
+      <obj_property name="ObjectShortName">write3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/layerDone0" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">layerDone0</obj_property>
+      <obj_property name="ObjectShortName">layerDone0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/layerDone1" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">layerDone1</obj_property>
+      <obj_property name="ObjectShortName">layerDone1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/layerDone2" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">layerDone2</obj_property>
+      <obj_property name="ObjectShortName">layerDone2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/layerDone3" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">layerDone3</obj_property>
+      <obj_property name="ObjectShortName">layerDone3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/sumTrigger" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">sumTrigger</obj_property>
+      <obj_property name="ObjectShortName">sumTrigger</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/start_network_controller" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">start_network_controller</obj_property>
+      <obj_property name="ObjectShortName">start_network_controller</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/lock" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">lock</obj_property>
+      <obj_property name="ObjectShortName">lock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/writeData" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">writeData</obj_property>
+      <obj_property name="ObjectShortName">writeData</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/layer" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">layer[1:0]</obj_property>
+      <obj_property name="ObjectShortName">layer[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/unit_addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">unit_addr[1:0]</obj_property>
+      <obj_property name="ObjectShortName">unit_addr[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/rom_address" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rom_address[1:0]</obj_property>
+      <obj_property name="ObjectShortName">rom_address[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/unit_sel" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">unit_sel[1:0]</obj_property>
+      <obj_property name="ObjectShortName">unit_sel[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/unit_address" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">unit_address[1:0]</obj_property>
+      <obj_property name="ObjectShortName">unit_address[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/weight0" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">weight0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">weight0[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/weight1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">weight1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">weight1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/weight2" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">weight2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">weight2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/weight3" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">weight3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">weight3[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/ram_addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ram_addr[9:0]</obj_property>
+      <obj_property name="ObjectShortName">ram_addr[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/RAM_address" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">RAM_address[9:0]</obj_property>
+      <obj_property name="ObjectShortName">RAM_address[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/ram_out" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ram_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ram_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/input0n0" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">input0n0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">input0n0[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/input1n0" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">input1n0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">input1n0[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/input2n0" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">input2n0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">input2n0[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/input3n0" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">input3n0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">input3n0[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/layerOutn0" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">layerOutn0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">layerOutn0[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/out0" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">out0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">out0[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/out1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">out1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">out1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/out2" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">out2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">out2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/out3" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">out3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">out3[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/layerOutn1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">layerOutn1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">layerOutn1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/layerOutn2" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">layerOutn2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">layerOutn2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/layerOutn3" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">layerOutn3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">layerOutn3[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Network_tb/UUT/start_network_controller" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">start_network_controller</obj_property>
+      <obj_property name="ObjectShortName">start_network_controller</obj_property>
+   </wvobject>
+</wave_config>
