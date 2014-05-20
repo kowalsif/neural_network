@@ -47,23 +47,26 @@ always @ (state or start or count or unitcount) begin //state or start
 			nextstate <= 2;
 			end
 		2: begin
-			if(count == 4) nextstate <= 4; //TODO: Python
-			else nextstate <= 3;
+			nextstate <= 3;
 			end
 		3: begin //stall one cycle for ram latency
+			if(count ==4) nextstate <= 5; //TODO: Python
+			else nextstate <= 4;
+			end
+		4: begin //stall second cycle for ram latency
 			nextstate <= 1;
 			end
-		4: begin //update unit while stalling for ram latency
-			nextstate <= 5;
+		5: begin //update unit while stalling for ram latency
+			nextstate <= 6;
 			end
-		5: begin //check unit count
-			if(unitcount == 4) nextstate <= 6; //TODO: Python
+		6: begin //check unit count
+			if(unitcount == 4) nextstate <= 7; //TODO: Python
 			else nextstate <= 1;
 			end
-		6: begin
-			nextstate <= 7;
-			end
 		7: begin
+			nextstate <= 8;
+			end
+		8: begin
 			nextstate <= 0;
 			end
 		default: begin
@@ -115,7 +118,7 @@ always @ (posedge clk) begin
 			count <= count;
 			unitcount <= unitcount;
 			end
-		3: begin //stall one cycle for ram latency
+		3: begin
 			RAM_address <= RAM_address;
 			unit_sel <= unit_sel;
 			unit_address <= unit_address;
@@ -124,7 +127,16 @@ always @ (posedge clk) begin
 			count <= count;
 			unitcount <= unitcount;
 			end
-		4: begin //update unit while stalling for ram latency
+		4: begin //stall one cycle for ram latency
+			RAM_address <= RAM_address;
+			unit_sel <= unit_sel;
+			unit_address <= unit_address;
+			write <= 0;
+			sum_trigger <= 0;
+			count <= count;
+			unitcount <= unitcount;
+			end
+		5: begin //update unit while stalling for ram latency
 			RAM_address <= RAM_address;
 			unit_sel <= unit_sel + 1;
 			unit_address <= 0;
@@ -133,7 +145,7 @@ always @ (posedge clk) begin
 			count <= 0;
 			unitcount <= unitcount + 1;
 			end
-		5: begin //check unit count
+		6: begin //check unit count
 			RAM_address <= RAM_address;
 			unit_sel <= unit_sel;
 			unit_address <= unit_address;
@@ -142,7 +154,7 @@ always @ (posedge clk) begin
 			count <= count;
 			unitcount <= unitcount;
 			end
-		6: begin
+		7: begin
 			RAM_address <= RAM_address;
 			unit_sel <= unit_sel;
 			unit_address <= unit_address;
@@ -151,7 +163,7 @@ always @ (posedge clk) begin
 			count <= count;
 			unitcount <= unitcount;
 			end
-		7: begin
+		8: begin
 			RAM_address <= RAM_address;
 			unit_sel <= unit_sel;
 			unit_address <= unit_address;
