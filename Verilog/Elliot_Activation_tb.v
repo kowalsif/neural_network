@@ -23,18 +23,17 @@
 module Elliot_Activation_tb2();
 
     reg [31:0] x;
-    reg [7:0] s;
     reg start;
     reg clk;
     wire [31:0] y;
     wire end_signal;
     
-    Elliot_Activation elliot(x, s, start, clk, y, end_signal);
+    Elliot_Activation elliot(x, start, clk, y, end_signal);
     
     initial begin
-    x=0; s=0; start=0; clk=0; #5;
+    x=0; start=0; clk=0; #5;
        
-    x=2; s=1; start=1; #5;
+    x=2; start=1; #5;
     start = 0; #5;
        
     #1000;   
