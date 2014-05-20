@@ -1,12 +1,12 @@
-#import unit_generation
+import unit_generation
 import math
 
 def WeightRegBank(numUnits):
 	f = open('Weight_Reg_Bank.v', 'w')
-	#f.write(unit_generation.header('WeightRegBank', 'For '+str(numUnits)+' units'))
+	f.write(unit_generation.header('WeightRegBank', 'For '+str(numUnits)+' units'))
 	
 	#module declaration
-	f.write('module WeightRegBank(dataIn, address, write, clk')
+	f.write('module WeightRegBank(dataIn, address, write, reset, clk')
 	for i in range(numUnits):
 		f.write(', out{}'.format(i))
 	f.write(');\n')
@@ -15,7 +15,7 @@ def WeightRegBank(numUnits):
 	f.write('input [7:0] dataIn;\n')
 	addressSize = int(math.ceil(math.log(numUnits)/math.log(2)))-1
 	f.write('input [{}:0] address;\n'.format(addressSize))
-	f.write('input write, clk;\n')
+	f.write('input write, reset, clk;\n')
 	
 	#output declaration
 	f.write('output reg [7:0] out0')
@@ -25,7 +25,11 @@ def WeightRegBank(numUnits):
 	
 	#main block
 	f.write('always @ (posedge clk) begin\n')
-	f.write('	if(write == 1) begin\n')
+	f.write('\tif (reset == 1) begin\n')
+	for i in range(numUnits):
+		f.write('\t\tout{} <= 0;\n'.format(i))
+	f.write('\t\tend\n')
+	f.write('	else if(write == 1) begin\n')
 	f.write('		case(address)\n')
 	for i in range(numUnits):
 		f.write('			{}: begin\n'.format(i))
