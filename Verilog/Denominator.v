@@ -62,9 +62,13 @@ always @(state or X or start)begin
 end
     
 always@(posedge CLOCK)begin
+    if(reset==1) begin
+        denom<=0;
+		  startout<=0;
+		  end
     case(state)
         0: begin
-            denom<=0;
+            denom<=denom;
             startout<=0;
         end
         1: begin

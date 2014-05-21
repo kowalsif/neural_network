@@ -17,10 +17,27 @@ reg [1:0] address;
 reg write;
 reg sumTrigger;
 reg layer_Sel;
+reg reset;
 reg clk;
 wire [31:0] layerOut;
 wire layerDone;
-NeuralUnit UUT(input0, input1, input2, input3, weight, address, write, sumTrigger, layer_Sel, clk, layerOut, layerDone);
+
+NeuralUnit UUT(
+	.input0(input0),
+	.input1(input1),
+	.input2(input2),
+	.input3(input3),
+	.weight(weight),
+	.address(address),
+	.write(write),
+	.sumTrigger(sumTrigger),
+	.layer_Sel(layer_Sel),
+	.reset(reset),
+	.clk(clk),
+	.layerOut(layerOut),
+	.layerDone(layerDone)
+	);
+
 
 	wire [7:0] internalWeight0 = UUT.weightWire0;
 	wire [31:0] shifter0 = UUT.shiftWire0;
@@ -36,17 +53,21 @@ NeuralUnit UUT(input0, input1, input2, input3, weight, address, write, sumTrigge
 	wire [31:0] elliot = UUT.elliotWire;
 	wire elliotEnd = UUT.elliot_end_signal;
 	reg [4:0] count=0;
+	
 initial begin
-	clk=0;
-	input0=0; input1=1; input2=2; input3=3; 
-	weight=0; address=0; write=1; sumTrigger=0; layer_Sel=0; #5;
+	clk=0; reset=1;
+	input0=0; input1=1; input2=2; input3=3; #5;
+	reset=0; #5;
+	weight=0; address=0; write=1; sumTrigger=0; layer_Sel=1; #5;
 	write=0; #5;
-	weight=1; address=1; write=1; sumTrigger=0; layer_Sel=0; #5;
+	weight=1; address=1; write=1; sumTrigger=0; layer_Sel=1; #5;
 	write=0; #5;
-	weight=2; address=2; write=1; sumTrigger=0; layer_Sel=0; #5;
+	weight=2; address=2; write=1; sumTrigger=0; layer_Sel=1; #5;
 	write=0; #5;
-	weight=3; address=3; write=1; sumTrigger=0; layer_Sel=0; #5;
+	weight=3; address=3; write=1; sumTrigger=0; layer_Sel=1; #5;
 	write=0; #5;
+	sumTrigger=1; #5;
+	sumTrigger=0;
 end
 
 always @ (posedge layerDone) begin

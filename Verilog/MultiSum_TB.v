@@ -26,10 +26,13 @@ end
 
 always @ (posedge done) begin
 	if(count==3) begin #5; $stop; end
-	in0=count*1+1; in1=count*2+1; in2=count*3+1; in3=count*4+1; start=0; #5;
-	start=1; #2;
-	start=0;
-	count=count+1;
+	else begin
+		#10;
+		in0=count*1+1; in1=count*2+1; in2=count*3+1; in3=count*4+1; start=0; #5;
+		start=1; #2;
+		start=0;
+		count=count+1;
+	end
 end
 
 always #1 clk = ~clk;

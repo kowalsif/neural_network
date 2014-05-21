@@ -50,9 +50,13 @@ always @ (state or start) begin
 end
 
 always @ (posedge clk) begin
-	case(state)
+	if(reset==1) begin
+		sum <= 0;
+		done <= 0;
+	end
+	else case(state)
 	    0: begin
-	        sum<=0;
+	        sum<=sum;
 	        done<=0;
 	    end
 		1: begin
