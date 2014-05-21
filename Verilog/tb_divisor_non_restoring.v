@@ -36,13 +36,12 @@ module tb_divisor_non_restoring;
         .CLOCK(CLOCK),
         .START(START),
         .Quotient(Quotient),
-        .Finish(Finish)
+        .fin(Finish)
     );
     
     
-    initial begin CLOCK = 0; forever #5 CLOCK = ~CLOCK; end
+    initial begin CLOCK = 0; forever #1    CLOCK = ~CLOCK; end
     initial begin
-        #400;
         Top = 10;
         Divisor = 2;
         START = 1'b1;
