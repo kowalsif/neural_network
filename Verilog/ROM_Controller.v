@@ -138,7 +138,7 @@ module ROM_Controller(
     blk_mem_gen_0 blk_rom (
       .clka(clk),    // input wire clka
       .ena(1'b1),      // input wire ena
-      .addra(rom_addr),  // input wire [31 : 0] addra
+      .addra({1'b0,rom_addr}),  // input wire [31 : 0] addra
       .douta(rom_output)  // output wire [31 : 0] douta
     );
     // INST_TAG_END ------ End INSTANTIATION Template ---------

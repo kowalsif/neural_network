@@ -38,7 +38,7 @@ always @ (layer)
 	else
 		layer_sel <=1;
 
-always @ (state,start,done) begin
+always @ (state,start,done,layer) begin
 	case(state)
 		0: begin
 			if(start==1)
