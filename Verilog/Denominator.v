@@ -36,12 +36,12 @@ always @(posedge CLOCK) begin
     else state <=nextstate;
 end
 
-always @(state or X)begin
+always @(state or X or start)begin
     case (state)
         0: begin
             if(start ==0)
                 nextstate<=0;
-            else if (start == 1&& X[31] ==1)
+            else if (X[31] ==1)
                 nextstate<=1;
             else
                 nextstate<=2;
@@ -68,7 +68,7 @@ always@(posedge CLOCK)begin
             startout<=0;
         end
         1: begin
-           denom<=denom <= (~X)+2'b10;
+           denom <= (~X)+2'b10;
            startout<=0;
         end
         2: begin

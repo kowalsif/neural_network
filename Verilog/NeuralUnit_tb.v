@@ -23,13 +23,13 @@ wire layerDone;
 NeuralUnit UUT(input0, input1, input2, input3, weight, address, write, sumTrigger, layer_Sel, clk, layerOut, layerDone);
 
 	wire [7:0] internalWeight0 = UUT.weightWire0;
-	wire [31:0] shifter0 = UUT.shiftwire0;
+	wire [31:0] shifter0 = UUT.shiftWire0;
 	wire [7:0] internalWeight1 = UUT.weightWire1;
-	wire [31:0] shifter1 = UUT.shiftwire1;
+	wire [31:0] shifter1 = UUT.shiftWire1;
 	wire [7:0] internalWeight2 = UUT.weightWire2;
-	wire [31:0] shifter2 = UUT.shiftwire2;
+	wire [31:0] shifter2 = UUT.shiftWire2;
 	wire [7:0] internalWeight3 = UUT.weightWire3;
-	wire [31:0] shifter3 = UUT.shiftwire3;
+	wire [31:0] shifter3 = UUT.shiftWire3;
 
 	wire [31:0] sum = UUT.sumWire;
 	wire sumEnd = UUT.sum_end_signal;
@@ -52,7 +52,7 @@ end
 always @ (posedge layerDone) begin
 	count = count+1;
 	if(count == 3) begin #5; $finish; end
-	if(count == 2) layer_sel=0;
+	if(count == 2) layer_Sel=0;
 	input0 = count+0; input1 = count+1; input2 = count+2; input3 = count+3; 
 	weight= count*1+1; address=0; write=1; #5;
 	write=0; #5;
