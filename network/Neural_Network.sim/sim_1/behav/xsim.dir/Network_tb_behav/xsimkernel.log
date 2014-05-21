@@ -1,5 +1,0 @@
-Running: xsim.dir/Network_tb_behav/xsimk.exe -simmode gui -wdb Network_tb_behav.wdb -simrunnum 0 -socket 54161
-Design successfully loaded
-Design Loading CPU Usage: 186 ms
-Simulation completed
-Simulation CPU Usage: 265 ms
