@@ -17,6 +17,7 @@ module NeuralUnit(
 	input write,
 	input sumTrigger,
 	input layer_Sel,
+	input reset,
 	input clk,
 	output [31:0] layerOut,
 	output layerDone
@@ -36,20 +37,25 @@ module NeuralUnit(
 	wire elliot_end_signal;
 	wire sum_end_signal;
 	//Create weight reg block
-	WeightRegBank bank(weight, address, write, clk, weightWire0, weightWire1, weightWire2, weightWire3);
+	//module WeightRegBank(dataIn, address, write, reset, clk, out0, out1, out2, out3);
+	WeightRegBank bank(.dataIn(weight), .address(address), .write(write), .reset(reset), .clk(clk), .out0(weightWire0), .out1(weightWire1), .out2(weightWire2), .out3(weightWire3));
 
 	//Create Elliot Function
-	Elliot_Activation elliot(sumWire, sum_end_signal, clk, elliotWire, elliot_end_signal);
+	//module Elliot_Activation(x,start,clk,reset,y,end_signal);
+	Elliot_Activation elliot(.x(sumWire), .start(sum_end_signal), .clk(clk), .reset(reset), .y(elliotWire), .end_signal(elliot_end_signal));
 
 	//Create summer
-	MultiSum summer(shiftWire0,shiftWire1,shiftWire2,shiftWire3,sumTrigger, clk, sumWire, sum_end_signal);
+	//module MultiSum(in0, in1, in2, in3, start, clk, reset, sum, done);
+	MultiSum summer(.in0(shiftWire0),.in1(shiftWire1),.in2(shiftWire2),.in3(shiftWire3),.start(sumTrigger), .clk(clk), .reset(reset), .sum(sumWire), .done(sum_end_signal));
 
 	//Create layer mux
-	LayerMux layer(sumWire, elliotWire, sum_end_signal, elliot_end_signal, layer_Sel, layerOut, layerDone);
+	//module LayerMux(summed_input,elliot_input,summed_finished,elliot_finished,sel,y,done);
+	LayerMux layer(.summed_input(sumWire), .elliot_input(elliotWire), .summed_finished(sum_end_signal), .elliot_finished(elliot_end_signal), .sel(layer_Sel), .y(layerOut), .done(layerDone));
 
 	//Create shifters
-	Shifter shifter0(input0, weightWire0, clk, shiftWire0);
-	Shifter shifter1(input1, weightWire1, clk, shiftWire1);
-	Shifter shifter2(input2, weightWire2, clk, shiftWire2);
-	Shifter shifter3(input3, weightWire3, clk, shiftWire3);
+	//module Shifter(base,power,clk,result);
+	Shifter shifter0(.base(input0), .power(weightWire0), .clk(clk), .result(shiftWire0));
+	Shifter shifter1(.base(input1), .power(weightWire1), .clk(clk), .result(shiftWire1));
+	Shifter shifter2(.base(input2), .power(weightWire2), .clk(clk), .result(shiftWire2));
+	Shifter shifter3(.base(input3), .power(weightWire3), .clk(clk), .result(shiftWire3));
 endmodule
