@@ -9,7 +9,7 @@ def DataRegBank(numUnits):
     f.write('module DataRegBank(')
     for i in range(numUnits):
         f.write('in{}, '.format(i))
-    f.write('dataIn, address, writeAddress, writeAll, clk')
+    f.write('dataIn, address, writeAddress, writeAll, reset, clk')
     for i in range(numUnits):
         f.write(', out{}'.format(i))
     f.write(');\n')
@@ -21,7 +21,7 @@ def DataRegBank(numUnits):
     f.write('dataIn;\n')
     addressSize = int(math.ceil(math.log(numUnits)/math.log(2)))-1
     f.write('input [{}:0] address;\n'.format(addressSize))
-    f.write('input writeAddress, writeAll, clk;\n')
+    f.write('input writeAddress, writeAll, reset, clk;\n')
     
     #output declaration
     f.write('output reg [31:0] out0')
@@ -31,7 +31,11 @@ def DataRegBank(numUnits):
     
     #main block
     f.write('always @ (posedge clk) begin\n')
-    f.write('   if(writeAddress == 1) begin\n')
+    f.write('\tif (reset == 1) begin \n')
+    for i in range (numUnits):
+        f.write('\t\tout{} <= 0;\n'.format(i))
+    f.write('\tend\n')
+    f.write('   else if(writeAddress == 1) begin\n')
     f.write('       case(address)\n')
     for i in range(numUnits):
         f.write('           {}: begin\n'.format(i))
