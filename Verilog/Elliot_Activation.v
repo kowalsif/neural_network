@@ -29,7 +29,7 @@ module Elliot_Activation(
     );
     
     reg [31:0] shifted_x;
-    wire den_start;
+    wire div_start;
     wire [31:0] den_out;
     
 	parameter s = 8'b00000001;
@@ -37,7 +37,7 @@ module Elliot_Activation(
 	always @ (x) begin
 		shifted_x <= x << s ;
 	end
-    Denominator denominator(x, clk, start, den_start, den_out);
-    Divisor_non_restoring divisor(shifted_x, den_out, clk, den_start, y, end_signal);
+    Denominator denominator(x, clk, start, div_start, den_out);
+    divide divider(end_signal,y,,shifted_x,den_out,1'b1,clk,div_start);
     
 endmodule

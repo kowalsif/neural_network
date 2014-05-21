@@ -41,7 +41,7 @@ def main():
 	MassAnd.MassAnd(numUnits)
 	RAM_MUX.RamMux(numUnits)
 	RAM_Read_Driver.RAMReadDriver(numUnits)
-	NetworkUnit(numUnits)
+	Network.NetworkUnit(numUnits)
 	
 	
 	

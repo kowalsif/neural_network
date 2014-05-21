@@ -13,12 +13,12 @@ input write, reset, clk;
 output reg [7:0] out0, out1, out2, out3;
 
 always @ (posedge clk) begin
-    if (reset == 1) begin
-        out0 <= 0;
-    	out1 <= 0;
-    	out2 <= 0;
-    	out3 <= 0;   
-        end
+	if (reset == 1) begin
+		out0 <= 0;
+		out1 <= 0;
+		out2 <= 0;
+		out3 <= 0;
+		end
 	else if(write == 1) begin
 		case(address)
 			0: begin
