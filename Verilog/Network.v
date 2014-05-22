@@ -16,11 +16,21 @@ wire [7:0] weight0, weight1, weight2, weight3, ram_out, ram_in;
 wire [6:0] RAM_address;
 wire [31:0] rom_out, data0, data1, data2, data3, unit0, unit1, unit2, unit3;
 
+assign out = unit0 & unit1 & unit2 & unit3;
+
 //module Network_Controller(start,done,reset,clk,layer_sel,[1:0]layer,RAM_Controll_Start);
 Network_Controller network_controller(.start(network_start),.done(done),.reset(reset),.clk(clk),.layer_sel(layer_sel),.layer(layer),.RAM_Controll_Start(ram_control_start));
 
 //module RAM_Read_Driver(start,layer,reset,clk,RAM_address,unit_sel,unit_address,write,sum_trigger);
-RAM_Read_Driver ram_read_driver(.start(ram_control_start),.layer(layer),.reset(reset),.clk(clk),.RAM_address({3'b000,RAM_address}),.unit_sel(unit_sel),.unit_address(unit_address),.write(ram_write),.sum_trigger(sum_trigger));
+RAM_Read_Driver ram_read_driver(.start(ram_control_start),
+    .layer(layer),
+    .reset(reset),
+    .clk(clk),
+    .RAM_address(RAM_address),
+    .unit_sel(unit_sel),
+    .unit_address(unit_address),
+    .write(ram_write),
+    .sum_trigger(sum_trigger));
 
 //module RAMMux([7:0] ram_out,[1:0] unit_sel,write,[7:0] weight0,write0,[7:0] weight1,write1,[7:0] weight2,write2,[7:0] weight3,write3);
 RAMMux ram_mux(.ram_out(ram_out),.unit_sel(unit_sel),.write(ram_write),.weight0(weight0),.write0(ram_write0),.weight1(weight1),.write1(ram_write1),.weight2(weight2),.write2(ram_write2),.weight3(weight3),.write3(ram_write3));
@@ -38,7 +48,7 @@ NeuralUnit neural_unit2(.input0(data0),.input1(data1),.input2(data2),.input3(dat
 NeuralUnit neural_unit3(.input0(data0),.input1(data1),.input2(data2),.input3(data3),.weight(weight3),.address(unit_address),.write(ram_write3),.sumTrigger(sum_trigger),.layer_Sel(layer_sel),.reset(reset),.clk(clk),.layerOut(unit3),.layerDone(done3));
 
 //block ram clock, enable, write enable, address, data in, data out
-blk_mem_gen_1 your_instance_name (.clka(clk),.ena(1'b1),.wea(0'b1),.addra(RAM_address),.dina(0),.douta(ram_out));
+blk_mem_gen_1 your_instance_name (.clka(clk),.ena(1'b1),.wea(1'b0),.addra(RAM_address),.dina(0),.douta(ram_out));
 
 //module MassAnd(CLOCK,reset,in0,in1,in2,in3,done);
 MassAnd mass_and(.CLOCK(clk),.reset(reset),.in0(done0),.in1(done1),.in2(done2),.in3(done3),.done(done));

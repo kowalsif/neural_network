@@ -20,20 +20,24 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Network_tb();
-reg start, reset,sysclk;
-wire done;
+module Network_tb;
+reg start, reset,clk;
+wire done, out;
 
-reg count[2:0];
-
-Network UUT(start,reset,sysclk,done);
+reg [2:0] count;
+//module Network(start, reset, clk, done, out);
+Network UUT(.start(start),.reset(reset),.clk(clk),.done(done),.out(out));
 
 initial begin
-//    #50; 
-    start = 1'b0; reset <= 1'b1; sysclk = 1'b1; #30;
-    reset <= 1'b0; #10;
-    start = 1'b1; #400;
+    start = 0; reset = 1; clk = 0; count = 3'b000; #30;
+    reset = 0; #10;
+    start = 1;
+end
+
+always @ (posedge done) begin
+    if(count==2) begin #50; $finish; end
+    else begin count = count + 1; end
 end
     
- always #1 sysclk = ~sysclk;
+ always #1 clk = ~clk;
 endmodule

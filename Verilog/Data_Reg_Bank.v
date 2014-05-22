@@ -7,9 +7,10 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module DataRegBank(in0, in1, in2, in3, dataIn, address, writeAddress, writeAll, clk, out0, out1, out2, out3);
+module DataRegBank(in0, in1, in2, in3, dataIn, address, writeAddress, writeAll, reset, clk, out0, out1, out2, out3);
 input [31:0] in0, in1, in2, in3, dataIn;
 input [1:0] address;
+input reset;
 input writeAddress, writeAll, clk;
 output reg [31:0] out0, out1, out2, out3;
 

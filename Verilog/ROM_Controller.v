@@ -24,7 +24,7 @@ module ROM_Controller(
     input start,
     input clk,
     input reset,
-    output [0:31] rom_output,
+    output [31:0] rom_output,
 	output reg [1:0] address,
 	output reg writeData,
     output reg start_network_controller
@@ -79,7 +79,7 @@ module ROM_Controller(
     always @ (posedge clk) begin 
         case(state)
             0: begin
-					rom_addr<=7;
+					rom_addr<=0;
 					address<=0;
 					writeData<=0;
 					start_network_controller <=0;

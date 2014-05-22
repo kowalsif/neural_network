@@ -36,13 +36,16 @@ module NeuralUnit(
 	wire [31:0] elliotWire;
 	wire elliot_end_signal;
 	wire sum_end_signal;
+	wire elliot_start_signal;
+	
+	assign elliot_start_signal = sum_end_signal & layer_Sel;
 	//Create weight reg block
 	//module WeightRegBank(dataIn, address, write, reset, clk, out0, out1, out2, out3);
 	WeightRegBank bank(.dataIn(weight), .address(address), .write(write), .reset(reset), .clk(clk), .out0(weightWire0), .out1(weightWire1), .out2(weightWire2), .out3(weightWire3));
 
 	//Create Elliot Function
 	//module Elliot_Activation(x,start,clk,reset,y,end_signal);
-	Elliot_Activation elliot(.x(sumWire), .start(sum_end_signal), .clk(clk), .reset(reset), .y(elliotWire), .end_signal(elliot_end_signal));
+	Elliot_Activation elliot(.x(sumWire), .start(elliot_start_signal), .clk(clk), .reset(reset), .y(elliotWire), .end_signal(elliot_end_signal));
 
 	//Create summer
 	//module MultiSum(in0, in1, in2, in3, start, clk, reset, sum, done);
