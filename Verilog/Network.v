@@ -49,7 +49,7 @@ NeuralUnit neural_unit2(.input0(data0),.input1(data1),.input2(data2),.input3(dat
 NeuralUnit neural_unit3(.input0(data0),.input1(data1),.input2(data2),.input3(data3),.weight(weight3),.address(unit_address),.write(ram_write3),.sumTrigger(sum_trigger),.layer_Sel(layer_sel),.reset(reset),.clk(clk),.layerOut(unit3),.layerDone(done3));
 
 //block ram clock, enable, write enable, address, data in, data out
-blk_mem_gen_1 your_instance_name (.clka(clk),.ena(1'b1),.wea(1'b0),.addra(RAM_address),.dina(0),.douta(ram_out));
+blk_mem_gen_1 weight_ram(.clka(clk),.wea(1'b0),.addra(RAM_address),.dina(0),.douta(ram_out));
 
 //module MassAnd(CLOCK,reset,in0,in1,in2,in3,done);
 MassAnd mass_and(.CLOCK(clk),.reset(reset),.in0(done0),.in1(done1),.in2(done2),.in3(done3),.done(done));
