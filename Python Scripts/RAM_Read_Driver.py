@@ -226,7 +226,7 @@ def RAMReadDriver(numUnits):
 	f.write('\t\t\tunit_sel <= unit_sel;\n')
 	f.write('\t\t\tunit_address <= unit_address;\n')
 	f.write('\t\t\twrite <= 0;\n')
-	f.write('\t\t\tsum_trigger <= 1;\n')
+	f.write('\t\t\tsum_trigger <= 0;\n')
 	f.write('\t\t\tcount <= count;\n')
 	f.write('\t\t\tunitcount <= unitcount;\n')
 	f.write('\t\t\tend\n')

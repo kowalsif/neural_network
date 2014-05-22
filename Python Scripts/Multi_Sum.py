@@ -10,48 +10,78 @@ def MultiSum(numUnits):
 	f.write('module MultiSum(')
 	for i in range(numUnits):
 		f.write('in{}, '.format(i))
-	f.write('start, clk, sum, done);\n')
+	f.write('start, clk, reset, sum, done);\n')
 
 	#input declaration
 	f.write('input [31:0] in0')
 	for i in range(1, numUnits):
 		f.write(', in{}'.format(i))
-	f.write(';\ninput start, clk;\n')
+	f.write(';\ninput start, clk, reset;\n')
 	
 	#output declaration
 	f.write('output reg [31:0] sum;\n')
 	f.write('output reg done;\n\n')
 	addressSize = int(math.ceil(math.log(numUnits+1)/math.log(2)))-1
-	f.write('reg [{}:0] state;\n\n'.format(addressSize))
+	f.write('reg [{}:0] state;\n'.format(addressSize))
+	f.write('reg [{}:0] nextstate;\n\n'.format(addressSize))
 	
 	#main block
 	f.write('always @ (posedge clk) begin\n')
+	f.write('\tif(reset == 1) state <= 0;\n')
+	f.write('\telse state <= nextstate;\n')
+	f.write('end\n\n')
+	
+	f.write('always @ (state or start) begin\n')
 	f.write('\tcase(state)\n')
 	
 	f.write('\t\t0: begin\n')
-	f.write('\t\t\tsum <= in0;\n')
-	f.write('\t\t\tstate <= state + 1\'b1;\n')
-	f.write('\t\t\tdone <= 0;\n')
+	f.write('\t\t\tif(start == 1) nextstate <= 1;\n')
+	f.write('\t\t\telse nextstate <= 0;\n')
 	f.write('\t\tend\n')
 	
-	for i in range(1,numUnits-1):
+	for i in range(1,numUnits+1):
 		f.write('\t\t{}: begin\n'.format(i))
-		f.write('\t\t\tsum <= sum + in{};\n'.format(i))
-		f.write('\t\t\tstate <= state + 1\'b1;\n')
+		f.write('\t\t\tnextstate <= {};\n'.format(i+1))
+		f.write('\t\tend\n')
+		
+	f.write('\t\t{}: begin\n'.format(numUnits+1))
+	f.write('\t\t\tnextstate <= 0;\n')
+	f.write('\t\tend\n')
+	
+	f.write('\t\tdefault: begin\n')
+	f.write('\t\t\tnextstate <= 0;\n')
+	f.write('\t\tend\n')
+	f.write('\tendcase\n')
+	f.write('end\n\n')
+	
+	f.write('always @ (posedge clk) begin\n')
+	f.write('\tif(reset==1) begin\n')
+	f.write('\t\tsum <= 0;\n')
+	f.write('\t\tdone <= 0;\n')
+	f.write('\tend\n')
+	
+	f.write('\telse case(state)\n')
+	f.write('\t\t0: begin\n')
+	f.write('\t\t\tsum<=sum;\n')
+	f.write('\t\t\tdone<=0;\n')
+	f.write('\t\tend\n')
+	
+	for i in range(1,numUnits+1):
+		f.write('\t\t{}: begin\n'.format(i))
+		if(i==1):
+			f.write('\t\t\tsum <= in{};\n'.format(i-1))
+		else:
+			f.write('\t\t\tsum <= sum + in{};\n'.format(i-1))
 		f.write('\t\t\tdone <= 0;\n')
 		f.write('\t\tend\n')
 		
-	f.write('\t\t{}: begin\n'.format(numUnits-1))
-	f.write('\t\t\tsum <= sum + in{};\n'.format(numUnits-1))
-	f.write('\t\t\tstate <= state + 1\'b1;\n')
+	f.write('\t\t{}: begin\n'.format(numUnits+1))
+	f.write('\t\t\tsum <= sum;\n')
 	f.write('\t\t\tdone <= 1;\n')
 	f.write('\t\tend\n')
 	
 	f.write('\t\tdefault: begin\n')
-	f.write('\t\t\tsum <= sum;\n')
-	f.write('\t\t\tif(start == 1)\n')
-	f.write('\t\t\t\tstate <= 0;\n')
-	f.write('\t\t\telse state <= state;\n')
+	f.write('\t\t\tsum <= 0;\n')
 	f.write('\t\t\tdone <= 0;\n')
 	f.write('\t\tend\n')
 	f.write('\tendcase\n')

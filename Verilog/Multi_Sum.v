@@ -16,18 +16,17 @@ output reg done;
 reg [2:0] state;
 reg [2:0] nextstate;
 
-
 always @ (posedge clk) begin
-    if(reset == 1) state <= 0;
-    else state<=nextstate;
+	if(reset == 1) state <= 0;
+	else state <= nextstate;
 end
 
 always @ (state or start) begin
 	case(state)
-	    0: begin
-	        if(start == 1) nextstate <=1;
-	        else nextstate <=0;
-	    end
+		0: begin
+			if(start == 1) nextstate <= 1;
+			else nextstate <= 0;
+		end
 		1: begin
 			nextstate <= 2;
 		end
@@ -38,13 +37,13 @@ always @ (state or start) begin
 			nextstate <= 4;
 		end
 		4: begin
-			nextstate <=5;
+			nextstate <= 5;
 		end
 		5: begin
-		    nextstate <=0;
+			nextstate <= 0;
 		end
 		default: begin
-			nextstate <=0;
+			nextstate <= 0;
 		end
 	endcase
 end
@@ -55,10 +54,10 @@ always @ (posedge clk) begin
 		done <= 0;
 	end
 	else case(state)
-	    0: begin
-	        sum<=sum;
-	        done<=0;
-	    end
+		0: begin
+			sum<=sum;
+			done<=0;
+		end
 		1: begin
 			sum <= in0;
 			done <= 0;
@@ -76,8 +75,8 @@ always @ (posedge clk) begin
 			done <= 0;
 		end
 		5: begin
-		    sum <= sum;
-		    done <=1;
+			sum <= sum;
+			done <= 1;
 		end
 		default: begin
 			sum <= 0;
