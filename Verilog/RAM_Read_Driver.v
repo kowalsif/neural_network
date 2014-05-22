@@ -1,28 +1,16 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
 // 
-// Create Date:    15:52:53 05/14/2014 
-// Design Name: 
-// Module Name:    RAM_Read_Driver 
-// Project Name: 
-// Target Devices: 
-// Tool versions: 
-// Description: 
-//
-// Dependencies: 
-//
-// Revision: 
-// Revision 0.01 - File Created
-// Additional Comments: 
-//
+// Module Name: RAMReadDriver
+// Project Name: Neural Network
+// Description: For 4 units
+// 
 //////////////////////////////////////////////////////////////////////////////////
+
 module RAM_Read_Driver(start,layer,reset,clk,RAM_address,unit_sel,unit_address,write,sum_trigger);
 input start,reset,clk;
 input [1:0] layer;
 output reg [9:0] RAM_address;
-//output reg [1:0] unit_adress;
 output reg [1:0] unit_sel,unit_address; //TODO: Python
 output reg write, sum_trigger;
 
@@ -44,12 +32,12 @@ always @ (state or start or count or unitcount) begin //state or start
 				nextstate <= 0;
 			end
 		1: begin //stall one cycle for ram latency
-		    nextstate <= 2;
-		    end
+			nextstate <= 2;
+			end
 		2: begin //stall two cycles for ram latency
-		    nextstate <= 3;
-		    end
-		3: begin 
+			nextstate <= 3;
+			end
+		3: begin
 			nextstate <= 4;
 			end
 		4: begin
@@ -107,24 +95,24 @@ always @ (posedge clk) begin
 			unitcount <= 0;
 			end
 		1: begin //stall one cycle for ram latency
-            RAM_address <= RAM_address;
-            unit_sel <= unit_sel;
-            unit_address <= unit_address;
-            write <= 0;
-            sum_trigger <= 0;
-            count <= count;
-            unitcount <= unitcount;
-            end
+			RAM_address <= RAM_address;
+			unit_sel <= unit_sel;
+			unit_address <= unit_address;
+			write <= 0;
+			sum_trigger <= 0;
+			count <= count;
+			unitcount <= unitcount;
+			end
 		2: begin //stall two cycles for ram latency
-		  	RAM_address <= RAM_address;
-            unit_sel <= unit_sel;
-            unit_address <= unit_address;
-            write <= 0;
-            sum_trigger <= 0;
-            count <= count;
-            unitcount <= unitcount;
-            end
-		3: begin 
+			RAM_address <= RAM_address;
+			unit_sel <= unit_sel;
+			unit_address <= unit_address;
+			write <= 0;
+			sum_trigger <= 0;
+			count <= count;
+			unitcount <= unitcount;
+			end
+		3: begin
 			RAM_address <= RAM_address;
 			unit_sel <= unit_sel;
 			unit_address <= unit_address;
@@ -142,7 +130,7 @@ always @ (posedge clk) begin
 			count <= count;
 			unitcount <= unitcount;
 			end
-		5: begin
+		5: begin //stall one cycle for ram latency
 			RAM_address <= RAM_address;
 			unit_sel <= unit_sel;
 			unit_address <= unit_address;
@@ -151,7 +139,7 @@ always @ (posedge clk) begin
 			count <= count;
 			unitcount <= unitcount;
 			end
-		6: begin //stall one cycle for ram latency
+		6: begin //stall two cycles for ram latency
 			RAM_address <= RAM_address;
 			unit_sel <= unit_sel;
 			unit_address <= unit_address;
@@ -192,7 +180,7 @@ always @ (posedge clk) begin
 			unit_sel <= unit_sel;
 			unit_address <= unit_address;
 			write <= 0;
-			sum_trigger <= 1;
+			sum_trigger <= 0; //what? was one, should check
 			count <= count;
 			unitcount <= unitcount;
 			end
