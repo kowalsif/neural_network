@@ -22,7 +22,8 @@
 
 module Network_tb;
 reg start, reset,clk;
-wire done, out;
+wire done;
+wire [31:0] out;
 
 reg [2:0] count;
 //module Network(start, reset, clk, done, out);

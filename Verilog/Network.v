@@ -8,7 +8,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 module Network(start, reset, clk, done, out);
 input start, reset, clk;
-output done, out;
+output done;
+output [31:0] out;
 
 wire network_start, ram_control_start, layer_sel, ram_write, rom_write, ram_write0, ram_write1, ram_write2, ram_write3, sum_trigger, done0, done1, done2, done3, done;
 wire [1:0] layer, unit_sel, data_reg_address, unit_address;
